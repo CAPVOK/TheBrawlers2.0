@@ -2,6 +2,7 @@
   all: unset;
   display: inline-flex;
   align-items: center;
+  box-sizing: border-box;
   cursor: pointer;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;

@@ -22,6 +22,7 @@ const TaskItem: FC<ITaskItemProps> = (props) => {
         [styles.user]: isUser,
       })}
       onClick={clickHandler}
+      tabIndex={0}
     >
       <p className={styles.text}>{title}</p>
       <p className={styles.status}>{statusTitle}</p>

@@ -6,9 +6,12 @@
   color: var(--clr-on-primary-container);
   background-color: var(--clr-primary-container);
   border-radius: 1rem;
+  transition: 0.1s;
+  box-shadow: var(--box-shadow-1);
 }
 
 .text {
+  font-weight: 500;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -39,4 +42,10 @@
   top: 0;
   left: 0;
   background-color: var(--clr-tertiary);
+}
+
+@media (hover: hover) {
+  .task:hover {
+    box-shadow: var(--box-shadow-2);
+  }
 }

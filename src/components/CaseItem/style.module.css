@@ -1,37 +1,48 @@
 .case {
+  position: relative;
   padding: 20px;
   cursor: pointer;
   color: var(--clr-on-tertiary-container);
   background-color: var(--clr-tertiary-container);
   border-radius: 1rem;
   overflow: hidden;
-  transition: 0.5s;
-  display: grid;
-  grid-template-rows: 1fr 0;
+  transition: 0.1s;
+  box-shadow: var(--box-shadow-1);
 }
 
 .title {
+  font-weight: 500;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
-.text {
-  animation: fadeIn 0.5s ease forwards;
+.content {
+  height: 0;
+  overflow: hidden;
 }
 
-.active {
-  color: var(--clr-on-tertiary);
-  background-color: var(--clr-tertiary);
-  grid-template-rows: 1fr auto;
+.active .content {
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease forwards;
+  display: grid;
+  gap: 1rem;
+  height: min-content;
+}
+
+.case:focus-visible {
+  outline: 2px solid var(--clr-tertiary);
+}
+
+@media (hover: hover) {
+  .case:hover {
+    box-shadow: var(--box-shadow-2);
+  }
 }
 
 @keyframes fadeIn {
   0% {
-    opacity: 0;
-  }
-  20% {
     opacity: 0;
   }
   100% {

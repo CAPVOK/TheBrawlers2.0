@@ -120,6 +120,11 @@ function CasesBar() {
     }
     changeActiveCase(id);
   };
+
+  const hadleCaseButtonClick = (id: number) => {
+    console.log(id); /* todo */
+  };
+
   return (
     <div className={styles.sidebar}>
       <h2 className={styles.title}>{t("components.case.Solutions")}</h2>
@@ -130,7 +135,8 @@ function CasesBar() {
               key={item.id}
               title={item.title}
               text={item.desc}
-              clickHandler={() => handleCaseClick(item.id)}
+              clickCardHandler={() => handleCaseClick(item.id)}
+              clickButtonHandler={() => hadleCaseButtonClick(item.id)}
               isActive={activeCase === item.id}
             />
           ))}
