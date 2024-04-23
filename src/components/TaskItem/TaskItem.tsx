@@ -6,16 +6,25 @@ interface ITaskItemProps {
   clickHandler: () => void;
   title: string;
   isActive: boolean;
+  statusTitle: string;
+  isUser: boolean;
 }
 
 const TaskItem: FC<ITaskItemProps> = (props) => {
-  const { clickHandler, title, isActive } = props;
+  const { clickHandler, title, isActive, statusTitle, isUser } = props;
+
+  if (isUser) console.log(title);
+
   return (
     <div
-      className={clsx(styles.task, { [styles.active]: isActive })}
+      className={clsx(styles.task, {
+        [styles.active]: isActive,
+        [styles.user]: isUser,
+      })}
       onClick={clickHandler}
     >
       <p className={styles.text}>{title}</p>
+      <p className={styles.status}>{statusTitle}</p>
     </div>
   );
 };

@@ -48,6 +48,18 @@
         "ChangeLanguage": "Сменить язык",
         "ChangeTheme": "Сменить Тему"
     },
-    "components": {},
+    "components": {
+        "task": {
+            "status": {
+                "draft": "Ожидание",
+                "progress": "В процессе",
+                "uknown": "Неизвестно"
+            },
+            "Tasks": "Задачи"
+        },
+        "case": {
+            "Solutions": "Возможные решения"
+        }
+    },
     "pages": {}
 }

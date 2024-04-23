@@ -48,6 +48,18 @@
         "ChangeLanguage": "Change Language",
         "ChangeTheme": "Change Theme"
     },
-    "components": {},
+    "components": {
+        "task": {
+            "status": {
+                "draft": "Waiting",
+                "progress": "Progress",
+                "uknown": "Uknown"
+            },
+            "Tasks": "Tasks"
+        },
+        "case": {
+            "Solutions": "Possible solutions"
+        }
+    },
     "pages": {}
 }

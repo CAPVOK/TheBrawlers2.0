@@ -3,6 +3,7 @@ import { CaseItem } from "../../components";
 import { ICase, useCases } from "../../store/casesSlice";
 import styles from "./styles.module.css";
 import { useTasks } from "../../store/tasksSlice";
+import { useTranslation } from "react-i18next";
 
 const CLUSTERS: { [key: number]: ICase[] } = {
   1: [
@@ -86,6 +87,8 @@ const CLUSTERS: { [key: number]: ICase[] } = {
 };
 
 function CasesBar() {
+  const { t } = useTranslation();
+
   const [cases, setCases] = useState<ICase[]>([]);
 
   const { activeTask, tasks } = useTasks();
@@ -115,14 +118,19 @@ function CasesBar() {
   };
   return (
     <div className={styles.sidebar}>
-      {cases.map((item) => (
-        <CaseItem
-          key={item.id}
-          title={item.title}
-          clickHandler={() => handleCaseClick(item.id)}
-          isActive={activeCase === item.id}
-        />
-      ))}
+      <h2 className={styles.title}>{t("components.case.Solutions")}</h2>
+      <div className={styles["scroll-block"]}>
+        <div className={styles.content}>
+          {cases.map((item) => (
+            <CaseItem
+              key={item.id}
+              title={item.title}
+              clickHandler={() => handleCaseClick(item.id)}
+              isActive={activeCase === item.id}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
