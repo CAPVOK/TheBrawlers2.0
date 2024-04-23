@@ -1,4 +1,7 @@
 .page {
   background-color: var(--clr-surface);
-  margin: 50px;
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
 }

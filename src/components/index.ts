@@ -1,4 +1,5 @@
 import { MainLayout } from "./MainLayout/MainLayout";
 import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
+import TaskItem from "./TaskItem/TaskItem";
 
-export { MainLayout, PrivateRoute };
+export { MainLayout, PrivateRoute, TaskItem };

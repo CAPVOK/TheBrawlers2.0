@@ -1,5 +1,11 @@
 import { MainLayout } from "../../components";
-import { LoginPage, MainPage, NotFoundPage, SomePage, RegisterPage } from "../../pages";
+import {
+  LoginPage,
+  MainPage,
+  NotFoundPage,
+  OverflowPage,
+  RegisterPage,
+} from "../../pages";
 import { IAppRoute } from "./types";
 
 /**
@@ -9,7 +15,7 @@ export enum RoutesEnum {
   Home = "/",
   Register = "/register",
   Login = "/login",
-  Some = "/some",
+  Stack = "/stack_overflow",
 }
 
 /**
@@ -35,14 +41,19 @@ export const routes: IAppRoute[] = [
         element: <MainPage />,
       },
       {
-        path: RoutesEnum.Some,
-        element: <SomePage />,
+        path: RoutesEnum.Stack,
+        element: <OverflowPage />,
       },
     ],
   },
   {
     path: RoutesEnum.Login,
     element: <LoginPage />,
+  },
+  {
+    path: "/main",
+    index: true,
+    element: <MainPage />,
   },
   {
     path: RoutesEnum.Register,

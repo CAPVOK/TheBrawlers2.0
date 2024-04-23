@@ -5,12 +5,12 @@ import { useTheme } from "../../hooks/useTheme";
 import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
 
-export const SomePage = () => {
+export const OverflowPage = () => {
   const { t } = useTranslation();
   const { toggleThemeMode } = useTheme();
   return (
     <div className={styles.page}>
-      <h1>Some Page</h1>
+      <h1>Overflow Page</h1>
       <p>{t("common.PrivacyPolicy")}</p>
       <button onClick={toggleLanguage}>change Language</button>
       <button onClick={toggleThemeMode}>change theme</button>

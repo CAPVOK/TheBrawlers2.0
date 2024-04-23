@@ -4,6 +4,9 @@ import { FC, ReactNode } from "react";
 
 export const MainLayout: FC<{ children?: ReactNode }> = ({ children }) => {
   return (
-    <div className={styles["main-layout-root"]}>{children ?? <Outlet />}</div>
+    <div className={styles["main-layout-root"]}>
+      <nav>nav bar</nav> {/* todo */}
+      {children ?? <Outlet />}
+    </div>
   );
 };

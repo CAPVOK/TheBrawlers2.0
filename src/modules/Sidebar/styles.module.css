@@ -1,0 +1,7 @@
+.sidebar {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(215, 215, 215);
+  overflow-y: auto;
+}
