@@ -27,6 +27,21 @@ const CLUSTERS: { [key: number]: ICase[] } = {
       title: "Не работает отправка уведомлений",
       desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
     },
+    {
+      id: 11,
+      title: "Не работает отправка жопа",
+      desc: "Не работает отправка уведомленийНе работает отправка уведомлений",
+    },
+    {
+      id: 12,
+      title: "Не работает отправка оплата",
+      desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
+    },
+    {
+      id: 13,
+      title: "Не работает отправка жопа last",
+      desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
+    },
   ],
   2: [
     {
@@ -68,21 +83,6 @@ const CLUSTERS: { [key: number]: ICase[] } = {
       title: "Не работает отправка оплата",
       desc: "Не работает отправка уведомлений",
     },
-    {
-      id: 11,
-      title: "Не работает отправка жопа",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомлений",
-    },
-    {
-      id: 12,
-      title: "Не работает отправка оплата",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
-    },
-    {
-      id: 13,
-      title: "Не работает отправка жопа last",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
-    },
   ],
 };
 
@@ -92,7 +92,7 @@ function CasesBar() {
   const [cases, setCases] = useState<ICase[]>([]);
 
   const { activeTask, tasks } = useTasks();
-  const { activeCase, changeActiveCase } = useCases();
+  const { activeCase, changeActiveCase, closeCase } = useCases();
 
   // типа запроc
   useEffect(() => {
@@ -114,6 +114,10 @@ function CasesBar() {
   }, [activeTask, tasks]);
 
   const handleCaseClick = (id: number) => {
+    if (activeCase === id) {
+      closeCase();
+      return;
+    }
     changeActiveCase(id);
   };
   return (
@@ -125,6 +129,7 @@ function CasesBar() {
             <CaseItem
               key={item.id}
               title={item.title}
+              text={item.desc}
               clickHandler={() => handleCaseClick(item.id)}
               isActive={activeCase === item.id}
             />
