@@ -1,0 +1,41 @@
+.spinner {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.25rem solid transparent;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s ease infinite;
+}
+
+.primary {
+  border-top-color: var(--clr-primary);
+}
+.secondary {
+  border-top-color: var(--clr-secondary);
+}
+.tertiary {
+  border-top-color: var(--clr-tertiary);
+}
+.error {
+  border-top-color: var(--clr-error);
+}
+.success {
+  border-top-color: var(--clr-success);
+}
+.on-surface {
+  border-top-color: var(--clr-on-surface);
+}
+.surface {
+  border-top-color: var(--clr-surface);
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}

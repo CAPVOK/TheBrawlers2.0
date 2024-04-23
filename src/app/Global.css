@@ -1,0 +1,70 @@
+:root {
+  --base-font-size: 16px;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/src/assets/fonts/Montserrat/Montserrat-Black.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/src/assets/fonts/Montserrat/Montserrat-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/src/assets/fonts/Montserrat/Montserrat-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/src/assets/fonts/Montserrat/Montserrat-Light.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: var(--base-font-size);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--clr-on-surface);
+  background-color: var(--clr-surface);
+}
+
+p {
+  font-family: "Montserrat";
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  margin: 0;
+}
+
+a {
+  color: var(--clr-primary);
+  text-decoration: none;
+}
+
+button {
+  font-family: "Montserrat";
+  font-weight: 400;
+}
