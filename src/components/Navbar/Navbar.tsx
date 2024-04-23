@@ -10,7 +10,7 @@ const Navbar = () => {
   const { toggleThemeMode } = useTheme();
   return (
     <nav className={styles.nav}>
-      <p>{t("Navbar")}</p>
+      <p className={styles.title}>The Brawlers2.0</p>
       <Button onClick={toggleLanguage} label={t("common.ChangeLanguage")} />
       <Button
         onClick={toggleThemeMode}

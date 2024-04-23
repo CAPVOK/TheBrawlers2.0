@@ -7,3 +7,7 @@
   background-color: var(--clr-surface-container);
   border-bottom: 1px solid var(--clr-outline);
 }
+
+.title {
+  font-weight: 500;
+}
