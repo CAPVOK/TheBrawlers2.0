@@ -1,4 +1,3 @@
-import { MainLayout } from "../../components";
 import {
   LoginPage,
   MainPage,
@@ -32,28 +31,18 @@ export enum RoutesEnum {
 export const routes: IAppRoute[] = [
   {
     path: RoutesEnum.Home,
-    element: <MainLayout />,
+    index: true,
     isPrivate: true,
-    children: [
-      {
-        path: RoutesEnum.Home,
-        index: true,
-        element: <MainPage />,
-      },
-      {
-        path: RoutesEnum.Stack,
-        element: <OverflowPage />,
-      },
-    ],
+    element: <MainPage />,
+  },
+  {
+    isPrivate: true,
+    path: RoutesEnum.Stack,
+    element: <OverflowPage />,
   },
   {
     path: RoutesEnum.Login,
     element: <LoginPage />,
-  },
-  {
-    path: "/main",
-    index: true,
-    element: <MainPage />,
   },
   {
     path: RoutesEnum.Register,

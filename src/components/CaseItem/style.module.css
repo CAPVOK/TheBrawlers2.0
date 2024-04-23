@@ -1,0 +1,20 @@
+.case {
+  padding: 20px;
+  cursor: pointer;
+  color: var(--clr-on-tertiary-container);
+  background-color: var(--clr-tertiary-container);
+  border-radius: 1rem;
+}
+
+.text {
+    overflow: hidden; /* Скрываем лишний текст */
+    display: -webkit-box; /* Старые версии Safari/Chrome/iOS */
+    -webkit-line-clamp: 2; /* Ограничение на количество строк */
+    -webkit-box-orient: vertical; /* Расположение текста по вертикали */
+    text-overflow: ellipsis; /* Добавляем многоточие в конце текста */
+  }
+
+.active {
+  color: var(--clr-on-tertiary);
+  background-color: var(--clr-tertiary);
+}

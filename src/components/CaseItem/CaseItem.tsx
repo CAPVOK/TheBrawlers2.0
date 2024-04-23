@@ -1,18 +1,18 @@
 import { FC } from "react";
-import { clsx } from "clsx";
 import styles from "./style.module.css";
+import { clsx } from "clsx";
 
-interface ITaskItemProps {
+interface ICaseItemProps {
   clickHandler: () => void;
   title: string;
   isActive: boolean;
 }
 
-const TaskItem: FC<ITaskItemProps> = (props) => {
+const CaseItem: FC<ICaseItemProps> = (props) => {
   const { clickHandler, title, isActive } = props;
   return (
     <div
-      className={clsx(styles.task, { [styles.active]: isActive })}
+      className={clsx(styles.case, { [styles.active]: isActive })}
       onClick={clickHandler}
     >
       <p className={styles.text}>{title}</p>
@@ -20,4 +20,4 @@ const TaskItem: FC<ITaskItemProps> = (props) => {
   );
 };
 
-export default TaskItem;
+export default CaseItem;

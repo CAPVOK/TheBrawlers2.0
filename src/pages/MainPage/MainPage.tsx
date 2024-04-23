@@ -1,32 +1,21 @@
-import { Link } from "react-router-dom";
-import { toggleLanguage } from "../../app/i18n";
-import { useTheme } from "../../hooks/useTheme";
+import { clsx } from "clsx";
 import styles from "./styles.module.css";
-import { useTranslation } from "react-i18next";
-import { RoutesEnum } from "../../app/routes";
-import { logoutUser } from "../../core/auth/layer";
-import { Button } from "../../components/UI";
 import { Sidebar } from "../../modules/Sidebar/Sidebar";
+import { Navbar } from "../../components";
+import CasesBar from "../../modules/CasesBar/CasesBar";
+import { MainPageContent } from "../../modules/MainPageContent/MainPageContent";
+import { useTasks } from "../../store/tasksSlice";
 
 export const MainPage = () => {
-  const { t } = useTranslation();
-  const { toggleThemeMode } = useTheme();
+  const { activeTask } = useTasks();
   return (
     <div className={styles.page}>
-      <Sidebar />
-      <div>
-        <h1>Main Page</h1>
-        <p>{t("common.PrivacyPolicy")}</p>
-        <Button onClick={toggleLanguage} label="change language" />
-        <Button
-          onClick={toggleThemeMode}
-          color="tertiary"
-          label="change theme"
-        />
-        <Button onClick={logoutUser} label="logout" />
-        <Link to={RoutesEnum.Stack}>To Some</Link>
+      <Navbar />
+      <div className={clsx(styles.body, { [styles.open]: activeTask !== -1 })}>
+        <Sidebar />
+        <MainPageContent />
+        <CasesBar />
       </div>
-      <div>lkvdflk</div>
     </div>
   );
 };
