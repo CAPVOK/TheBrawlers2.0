@@ -100,8 +100,8 @@ function CasesBar() {
     }
 
     const timer = setTimeout(() => {
-      setCases(CLUSTERS[taskData.cluster] || []);
-    }, 2000);
+      setCases(taskData.cluster ? CLUSTERS[taskData.cluster] || [] : []);
+    }, 1000);
 
     return () => {
       if (timer) {

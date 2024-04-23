@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { TaskItem } from "../../components";
-import { ITask, useTasks } from "../../store/tasksSlice";
+import { ITask, TaskStatusEnum, useTasks } from "../../store/tasksSlice";
 import styles from "./styles.module.css";
 import { useCases } from "../../store/casesSlice";
 
@@ -10,36 +10,42 @@ const TASKS: ITask[] = [
     title: "Не работает отправка уведомлений",
     desc: "",
     cluster: 1,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 1,
     title: "Не работает отправка оплата",
     desc: "",
     cluster: 2,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 2,
     title: "Не работает отправка жопа",
     desc: "",
     cluster: 3,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 3,
     title: "Не работает отправка уведомлений",
     desc: "",
     cluster: 4,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 4,
     title: "Не работает отправка оплата",
     desc: "",
     cluster: 1,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 5,
     title: "Не работает отправка жопа",
     desc: "",
     cluster: 2,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 6,
@@ -47,48 +53,56 @@ const TASKS: ITask[] = [
       "Не работает отправка уведомлений отправка уведомлений отправка уведомлений отправка уведомлений",
     desc: "",
     cluster: 3,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 7,
     title: "Не работает отправка оплата",
     desc: "",
     cluster: 4,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 8,
     title: "Не работает отправка жопа",
     desc: "",
     cluster: 1,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 9,
     title: "Не работает отправка уведомлений",
     desc: "",
     cluster: 2,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 10,
     title: "Не работает отправка оплата",
     desc: "",
     cluster: 3,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 11,
     title: "Не работает отправка жопа",
     desc: "",
     cluster: 4,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 12,
     title: "Не работает отправка оплата",
     desc: "",
     cluster: 1,
+    status: TaskStatusEnum.Draft,
   },
   {
     id: 13,
     title: "Не работает отправка жопа last",
     desc: "",
     cluster: 2,
+    status: TaskStatusEnum.Draft,
   },
 ]; // todo
 
@@ -100,7 +114,7 @@ function Sidebar() {
   useEffect(() => {
     const timer = setTimeout(() => {
       updateTasks(TASKS);
-    }, 2000);
+    }, 1000);
 
     return () => {
       if (timer) {

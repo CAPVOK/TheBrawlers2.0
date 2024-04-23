@@ -43,7 +43,10 @@
         "Actions": "Actions",
         "NoResults": "No Results",
         "NoData": "No Data",
-        "Login": "Login"
+        "Login": "Login",
+        "Logout": "Logout",
+        "ChangeLanguage": "Change Language",
+        "ChangeTheme": "Change Theme"
     },
     "components": {},
     "pages": {}

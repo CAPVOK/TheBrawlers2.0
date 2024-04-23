@@ -1,9 +1,18 @@
 import { create } from "zustand";
+
+export enum TaskStatusEnum {
+  Draft,
+  InProgress,
+  Completed,
+}
 export interface ITask {
   id: number;
   title: string;
   desc: string;
-  cluster: number;
+  status: TaskStatusEnum;
+  email?: string;
+  caseId?: number;
+  cluster?: number;
 }
 
 export type TasksState = {

@@ -43,7 +43,10 @@
         "Actions": "Действия",
         "NoResults": "Нет результатов",
         "NoData": "Нет данных",
-        "Login": "Войти"
+        "Login": "Войти",
+        "Logout": "Выйти",
+        "ChangeLanguage": "Сменить язык",
+        "ChangeTheme": "Сменить Тему"
     },
     "components": {},
     "pages": {}
