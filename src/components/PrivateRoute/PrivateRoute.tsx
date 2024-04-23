@@ -5,7 +5,7 @@ import { FC, ReactNode } from "react";
 import { USER_EMAIL_KEY, USER_TOKEN_KEY } from "../../core/auth/layer";
 
 export const PrivateRoute: FC<{ children?: ReactNode }> = ({ children }) => {
-  /* const { isAuth, saveUser } = useAuth();
+  const { isAuth, saveUser } = useAuth();
 
   const email = localStorage.getItem(USER_EMAIL_KEY);
   const token = localStorage.getItem(USER_TOKEN_KEY);
@@ -16,7 +16,7 @@ export const PrivateRoute: FC<{ children?: ReactNode }> = ({ children }) => {
     } else {
       return <Navigate to={RoutesEnum.Login} />;
     }
-  } */
+  }
 
   return children || <Outlet />;
 };
