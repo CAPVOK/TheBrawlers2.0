@@ -19,7 +19,9 @@ function OverflowContent() {
   const [editedTitle, setEditedTitle] = useState("");
 
   useEffect(() => {
-    const clusterData = CLUSTERS.find((cluster) => cluster.id === activeCluster);
+    const clusterData = CLUSTERS.find(
+      (cluster) => cluster.id === activeCluster
+    );
     if (clusterData) {
       setEditedTitle(clusterData.title);
     }
@@ -44,7 +46,14 @@ function OverflowContent() {
 
   const handleInputBlur = () => {
     setIsEditing(false);
-    // Add logic here to save changes if needed
+  };
+
+  const handleSaveChanges = () => {
+    setIsEditing(false);
+  };
+
+  const handleCancelChanges = () => {
+    setIsEditing(false);
   };
 
   return (
@@ -59,8 +68,8 @@ function OverflowContent() {
                 onChange={handleInputChange}
                 onBlur={handleInputBlur}
               />
-              <IconCheck stroke={2} />
-              <IconX stroke={2} />
+              <IconCheck stroke={2} onClick={handleSaveChanges} />
+              <IconX stroke={2} onClick={handleCancelChanges} />
             </>
           ) : (
             <>
