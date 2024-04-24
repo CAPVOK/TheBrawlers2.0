@@ -46,7 +46,9 @@
         "Login": "Войти",
         "Logout": "Выйти",
         "ChangeLanguage": "Сменить язык",
-        "ChangeTheme": "Сменить Тему"
+        "ChangeTheme": "Сменить Тему",
+        "Home": "Главная",
+        "StackOverflow": "Примеры решений"
     },
     "components": {
         "task": {
@@ -59,6 +61,12 @@
         },
         "case": {
             "Solutions": "Возможные решения"
+        },
+        "cluster":{
+            "status":{
+                "solved": "Есть решение",
+                "unsolved": "Без решения"
+            }
         }
     },
     "pages": {}

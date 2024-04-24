@@ -12,7 +12,7 @@ export const MainPage = () => {
     <div className={styles.page}>
       <Navbar />
       <div className={clsx(styles.body, { [styles.open]: activeTask !== -1 })}>
-        <Sidebar />
+        <Sidebar/>
         <MainPageContent />
         <CasesBar />
       </div>

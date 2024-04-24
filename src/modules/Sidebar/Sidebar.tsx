@@ -1,115 +1,11 @@
 import { useEffect } from "react";
 import { TaskItem } from "../../components";
-import { ITask, TaskStatusEnum, useTasks } from "../../store/tasksSlice";
+import { TaskStatusEnum, useTasks } from "../../store/tasksSlice";
 import styles from "./styles.module.css";
 import { useCases } from "../../store/casesSlice";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../store/authSlice";
-
-const TASKS: ITask[] = [
-  {
-    id: 0,
-    title: "Не работает отправка уведомлений",
-    desc: "",
-    cluster: 1,
-    status: TaskStatusEnum.Draft,
-  },
-  {
-    id: 1,
-    title: "Не работает отправка оплата",
-    desc: "",
-    cluster: 2,
-    email: "vova",
-    status: TaskStatusEnum.InProgress,
-  },
-  {
-    id: 2,
-    title: "Не работает отправка жопа",
-    desc: "",
-    cluster: 3,
-    email: "vova",
-    status: TaskStatusEnum.InProgress,
-  },
-  {
-    id: 3,
-    title: "Не работает отправка уведомлений",
-    desc: "",
-    cluster: 4,
-    status: TaskStatusEnum.InProgress,
-  },
-  {
-    id: 4,
-    title: "Не работает отправка оплата another user",
-    desc: "",
-    cluster: 1,
-    email: "lala",
-    status: TaskStatusEnum.InProgress,
-  },
-  {
-    id: 5,
-    title: "Не работает отправка жопа",
-    desc: "",
-    cluster: 2,
-    status: TaskStatusEnum.Draft,
-  },
-  {
-    id: 6,
-    title:
-      "Не работает отправка уведомлений отправка уведомлений отправка уведомлений отправка уведомлений",
-    desc: "",
-    cluster: 3,
-    status: TaskStatusEnum.Draft,
-  },
-  {
-    id: 7,
-    title: "Не работает отправка оплата",
-    desc: "",
-    cluster: 4,
-    status: TaskStatusEnum.Draft,
-  },
-  {
-    id: 8,
-    title: "Не работает отправка жопа",
-    desc: "",
-    cluster: 1,
-    status: TaskStatusEnum.Draft,
-  },
-  {
-    id: 9,
-    title: "Не работает отправка уведомлений",
-    desc: "",
-    cluster: 2,
-    status: TaskStatusEnum.Draft,
-  },
-  {
-    id: 10,
-    title: "Не работает отправка оплата",
-    desc: "",
-    cluster: 3,
-    status: TaskStatusEnum.Draft,
-  },
-  {
-    id: 11,
-    title: "Не работает отправка жопа",
-    desc: "",
-    cluster: 4,
-    status: TaskStatusEnum.Draft,
-  },
-  {
-    id: 12,
-    title: "Не работает отправка оплата",
-    desc: "",
-    cluster: 1,
-    status: TaskStatusEnum.Draft,
-  },
-  {
-    id: 13,
-    title: "Не работает отправка жопа last",
-    desc: "",
-    cluster: 2,
-    status: TaskStatusEnum.Draft,
-  },
-]; // todo
+import { TASKS } from "./Plug";
 
 function Sidebar() {
   const { t } = useTranslation();

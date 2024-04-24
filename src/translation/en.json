@@ -46,7 +46,9 @@
         "Login": "Login",
         "Logout": "Logout",
         "ChangeLanguage": "Change Language",
-        "ChangeTheme": "Change Theme"
+        "ChangeTheme": "Change Theme",
+        "Home": "Home",
+        "StackOverflow": "StackOverflow"
     },
     "components": {
         "task": {
@@ -59,6 +61,12 @@
         },
         "case": {
             "Solutions": "Possible solutions"
+        },
+        "cluster":{
+            "status":{
+                "solved": "Solved",
+                "unsolved": "Unsolved"
+            }
         }
     },
     "pages": {}
