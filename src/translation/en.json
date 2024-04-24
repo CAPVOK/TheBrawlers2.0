@@ -74,6 +74,8 @@
         }
     },
     "pages": {
-        "noTasks": "No tasks selected"
+        "noTasks": "No tasks selected",
+        "takeTask": "Get task",
+        "Complete": "Complete"
     }
 }

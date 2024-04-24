@@ -1,11 +1,10 @@
 import React, { ButtonHTMLAttributes } from "react";
 import clsx from "clsx";
 import styles from "./Button.module.css";
-import { ColorsType } from "../../../types/styles.types";
 
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label?: string;
-  color?: ColorsType;
+  color?: "primary" | "secondary" | "tertiary" | "error" | "success";
   isLoading?: boolean;
   icon?: React.ReactNode;
   fullWidth?: boolean;

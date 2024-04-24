@@ -31,9 +31,9 @@ export const getTaskByIdRequest = async (
 
 export const changeTaskStatusRequest = async (
   id: number
-): Promise<AxiosResponse<unknown>> => {
+): Promise<AxiosResponse<ITask>> => {
   try {
-    const response: AxiosResponse<unknown> = await taskApi.post(
+    const response: AxiosResponse<ITask> = await taskApi.post(
       `/task/${id}/status`
     );
     return response;

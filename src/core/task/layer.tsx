@@ -9,18 +9,14 @@ import { TaskStatusEnum } from "./types";
 export const getDraftTasks = async () => {
   const response = await getTasksRequest(TaskStatusEnum.Draft);
   const tasks = response.data;
-  if (tasks) {
-    useTasks.getState().updateDraftTasks(tasks);
-  }
+  useTasks.getState().updateDraftTasks(tasks || []);
   return response.data;
 };
 
 export const getActiveTasks = async () => {
   const response = await getTasksRequest(TaskStatusEnum.InProgress);
   const tasks = response.data;
-  if (tasks) {
-    useTasks.getState().updateActiveTasks(tasks);
-  }
+  useTasks.getState().updateActiveTasks(tasks || []);
   return response.data;
 };
 

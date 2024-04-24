@@ -29,14 +29,22 @@ function CasesBar() {
     setIsLoading(false);
   }
 
+  const allTasks = [...draftTasks, ...activeTasks];
+  const taskData = allTasks.find((task) => task.id === activeTask);
+
   useEffect(() => {
-    const allTasks = [...draftTasks, ...activeTasks];
-    const taskData = allTasks.find((task) => task.id === activeTask);
-    if (activeTask === -1 || !taskData) {
-      setCases([]);
+    if (taskData) {
+      getCasesByClusterDebounce(taskData.cluster.id);
+    }
+  }, [activeTask, taskData]);
+
+  /* useEffect(() => {
+    if (!taskData) {
       return;
     }
-    getCasesByClusterDebounce(taskData.cluster.id);
+    if (activeCase === -1) {
+      setCases([]);
+    }
     const intervalId = setInterval(() => {
       getCasesByCluster(taskData.cluster.id).then((cases) => {
         if (cases) {
@@ -47,7 +55,7 @@ function CasesBar() {
     return () => {
       clearInterval(intervalId);
     };
-  }, [activeTask, draftTasks, activeTasks]);
+  }, [activeCase, activeTask, taskData]); */
 
   const handleCaseClick = (id: number) => {
     if (activeCase === id) {
