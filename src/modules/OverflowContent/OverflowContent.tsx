@@ -2,10 +2,8 @@ import { Button, IButtonProps } from "../../components/UI";
 import { useCases } from "../../store/casesSlice";
 import styles from "./styles.module.css";
 import { useClusters } from "../../store/clasterSlice";
-import { CLUSTERS } from "../Sidebar/Plug";
 import TextEditor from "../TextEditor/TextEditor";
 import { useTranslation } from "react-i18next";
-import { CASES } from "../Sidebar/Plug";
 import { TextInput } from "@mantine/core";
 import { ChangeEvent, useState, useEffect } from "react";
 import { IconPencil, IconCheck, IconX } from "@tabler/icons-react";
@@ -18,14 +16,14 @@ function OverflowContent() {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
 
-  useEffect(() => {
+  /* useEffect(() => {
     const clusterData = CLUSTERS.find(
       (cluster) => cluster.id === activeCluster
     );
     if (clusterData) {
       setEditedTitle(clusterData.title);
     }
-  }, [activeCluster]);
+  }, [activeCluster]); */
 
   const closeButtonProps: IButtonProps = {
     onClick: () => {
@@ -99,14 +97,14 @@ function OverflowContent() {
         <h1 className={styles.solutions}>
           {t("components.case.ExistingSolutions")}
         </h1>
-        {CASES.map((item) => (
+        {/* {CASES.map((item) => (
           <div key={item.id} className={styles.item}>
             <h1>
               {item.title} #{item.id}
             </h1>
             <p>{item.desc}</p>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );
