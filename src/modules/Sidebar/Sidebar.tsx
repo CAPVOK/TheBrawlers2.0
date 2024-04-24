@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { TaskItem } from "../../components";
 import { useTasks } from "../../store/tasksSlice";
 import styles from "./styles.module.css";
@@ -11,7 +11,7 @@ import { TaskStatusEnum } from "../../core/task/types";
 function Sidebar() {
   const { t } = useTranslation();
 
-  /* const [isLoading, setIsLoading] = useState(true); */
+  const [isLoading, setIsLoading] = useState(false);
 
   const { userName } = useAuth();
   const { activeTask, changeActiveTask, draftTasks, activeTasks } = useTasks();
@@ -19,64 +19,28 @@ function Sidebar() {
 
   const tasks = [...activeTasks, ...draftTasks];
 
-  async function getTasks() {
-    getDraftTasks();
-    getActiveTasks();
+  async function getTasksWithDebounce() {
+    const loadingTimer = setTimeout(() => setIsLoading(true), 1000);
+    try {
+      await getDraftTasks();
+      await getActiveTasks();
+    } finally {
+      clearTimeout(loadingTimer);
+      setIsLoading(false);
+    }
   }
 
-  /* async function getTasks() {
-    let draftLoading = true;
-    let activeLoading = true;
-    await Promise.all([
-      getDraftTasks().then(() => {
-        draftLoading = false;
-      }),
-      getActiveTasks().then(() => {
-        activeLoading = false;
-      }),
-    ]);
-    setIsLoading(draftLoading && activeLoading);
-  } */
-
   useEffect(() => {
-    getTasks();
+    getTasksWithDebounce();
     const intervalId = setInterval(() => {
-      getTasks();
+      getDraftTasks();
+      getActiveTasks();
     }, 5000);
 
     return () => {
       clearInterval(intervalId);
     };
   }, []);
-
-  // типа запроc
-  /* useEffect(() => {
-    const timer = setTimeout(() => {
-      updateTasks(
-        TASKS.filter((task) => {
-          if (task.email) {
-            if (task.email !== userName) return false;
-          }
-          return true;
-        }).sort((taskA, taskB) => {
-          if (taskA.email === userName && taskB.email !== userName) {
-            return -1;
-          } else if (taskA.email !== userName && taskB.email === userName) {
-            return 1;
-          } else {
-            return 0;
-          }
-        })
-      );
-    }, 1000);
-
-    return () => {
-      if (timer) {
-        clearTimeout(timer);
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); */
 
   function getStatus(status?: TaskStatusEnum) {
     switch (status) {
@@ -99,7 +63,8 @@ function Sidebar() {
       <h2 className={styles.title}>{t("components.task.Tasks")}</h2>
       <div className={styles["scroll-block"]}>
         <div className={styles.content}>
-          {!!tasks.length &&
+          {!isLoading &&
+            !!tasks.length &&
             tasks.map((task) => (
               <TaskItem
                 key={task.id}
@@ -107,9 +72,10 @@ function Sidebar() {
                 clickHandler={() => hadleTaskClick(task.id)}
                 isActive={activeTask === task.id}
                 statusTitle={getStatus(task.status)}
-                isUser={userName === task.email}
+                isUser={userName === task.user.email}
               />
             ))}
+          {isLoading && <p>Loading...</p>}
         </div>
       </div>
     </div>

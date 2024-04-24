@@ -15,3 +15,8 @@ export interface IUserRegisterData {
 export interface IUserRegisterResponse {
   user_id: number;
 }
+
+export interface IUser {
+  id: number;
+  email: string;
+}

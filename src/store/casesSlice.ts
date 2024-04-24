@@ -1,14 +1,9 @@
 import { create } from "zustand";
-
-export interface ICase {
-  id: number;
-  title: string;
-  desc: string;
-}
+import { ICase } from "../core/case/types";
 
 export type CasesState = {
   activeCase: ICase["id"];
-  cases: ICase[]; // not used
+  cases: ICase[]; // not used todo
 };
 
 export type CasesActions = {

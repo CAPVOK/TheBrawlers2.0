@@ -1,11 +1,11 @@
 import axios from "axios";
 import { BASE_REST_URL, USER_TOKEN_KEY } from "../constants";
 
-const taskApi = axios.create({
+const caseApi = axios.create({
   baseURL: `https://${BASE_REST_URL}`,
 });
 
-taskApi.interceptors.request.use(
+caseApi.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem(USER_TOKEN_KEY);
     if (token) {
@@ -18,4 +18,4 @@ taskApi.interceptors.request.use(
   }
 );
 
-export { taskApi };
+export { caseApi };

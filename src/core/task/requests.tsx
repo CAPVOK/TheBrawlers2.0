@@ -1,13 +1,13 @@
 import { AxiosResponse } from "axios";
 import { taskApi } from "./api";
 
-import { IGetTasksResponse, ITask, TaskStatusEnum } from "./types";
+import { GetTasksResponseType, ITask, TaskStatusEnum } from "./types";
 
 export const getTasksRequest = async (
   status: TaskStatusEnum
-): Promise<AxiosResponse<IGetTasksResponse>> => {
+): Promise<AxiosResponse<GetTasksResponseType>> => {
   try {
-    const response: AxiosResponse<IGetTasksResponse> = await taskApi.get(
+    const response: AxiosResponse<GetTasksResponseType> = await taskApi.get(
       `/task/?status=${status}`
     );
     return response;
@@ -16,6 +16,7 @@ export const getTasksRequest = async (
     throw error;
   }
 };
+
 export const getTaskByIdRequest = async (
   id: number
 ): Promise<AxiosResponse<ITask>> => {
@@ -24,6 +25,20 @@ export const getTaskByIdRequest = async (
     return response;
   } catch (error) {
     console.error("Ошибка получения данных:", error);
+    throw error;
+  }
+};
+
+export const changeTaskStatusRequest = async (
+  id: number
+): Promise<AxiosResponse<unknown>> => {
+  try {
+    const response: AxiosResponse<unknown> = await taskApi.post(
+      `/task/${id}/status`
+    );
+    return response;
+  } catch (error) {
+    console.error("Ошибка изменения данных:", error);
     throw error;
   }
 };

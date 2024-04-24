@@ -65,13 +65,15 @@
             "Solutions": "Possible solutions",
             "ExistingSolutions": "Existing solutions to the problem"
         },
-        "cluster":{
-            "status":{
+        "cluster": {
+            "status": {
                 "solved": "Solved",
                 "unsolved": "Unsolved"
             },
             "clusters": "Popular issues"
         }
     },
-    "pages": {}
+    "pages": {
+        "noTasks": "No tasks selected"
+    }
 }

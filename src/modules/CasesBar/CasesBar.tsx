@@ -1,116 +1,51 @@
 import { useEffect, useState } from "react";
 import { CaseItem } from "../../components";
-import { ICase, useCases } from "../../store/casesSlice";
+import { useCases } from "../../store/casesSlice";
 import styles from "./styles.module.css";
 import { useTasks } from "../../store/tasksSlice";
 import { useTranslation } from "react-i18next";
-
-const CLUSTERS: { [key: number]: ICase[] } = {
-  1: [
-    {
-      id: 0,
-      title: "Не работает отправка уведомлений",
-      desc: "Не работает отправка уведомлений Не работает отправка уведомлений",
-    },
-    {
-      id: 1,
-      title: "Не работает отправка оплата",
-      desc: "Не работает отправка оплатаНе работает отправка оплатаНе работает отправка оплатаНе работает отправка оплата",
-    },
-    {
-      id: 2,
-      title: "Не работает отправка жопа",
-      desc: " Не работает отправка жопа Не работает отправка жопа Не работает отправка жопа",
-    },
-    {
-      id: 3,
-      title: "Не работает отправка уведомлений",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
-    },
-    {
-      id: 11,
-      title: "Не работает отправка жопа",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомлений",
-    },
-    {
-      id: 12,
-      title: "Не работает отправка оплата",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
-    },
-    {
-      id: 13,
-      title: "Не работает отправка жопа last",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
-    },
-  ],
-  2: [
-    {
-      id: 4,
-      title: "Не работает отправка оплата",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомлений",
-    },
-    {
-      id: 5,
-      title: "Не работает отправка жопа",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
-    },
-    {
-      id: 6,
-      title: "Не работает отправка уведомлений",
-      desc: "Не работает отправка уведомлений",
-    },
-    {
-      id: 7,
-      title: "Не работает отправка оплата",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
-    },
-  ],
-  3: [
-    {
-      id: 8,
-      title: "Не работает отправка жопа",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомленийНе работает отправка уведомлений",
-    },
-    {
-      id: 9,
-      title: "Не работает отправка уведомлений",
-      desc: "Не работает отправка уведомленийНе работает отправка уведомлений,",
-    },
-  ],
-  4: [
-    {
-      id: 10,
-      title: "Не работает отправка оплата",
-      desc: "Не работает отправка уведомлений",
-    },
-  ],
-};
+import { ICase } from "../../core/case/types";
+import { getCasesByCluster } from "../../core/case/layer";
+import { ICluster } from "../../store/clasterSlice";
 
 function CasesBar() {
   const { t } = useTranslation();
 
   const [cases, setCases] = useState<ICase[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { activeTask, draftTasks, activeTasks } = useTasks();
   const { activeCase, changeActiveCase, closeCase } = useCases();
 
-  // типа запроc
+  async function getCasesByClusterDebounce(cluster: ICluster["id"]) {
+    const loadingTimer = setTimeout(() => setIsLoading(true), 1000);
+    await getCasesByCluster(cluster).then((cases) => {
+      if (cases) {
+        setCases(cases);
+      }
+    });
+
+    clearTimeout(loadingTimer);
+    setIsLoading(false);
+  }
+
   useEffect(() => {
     const allTasks = [...draftTasks, ...activeTasks];
     const taskData = allTasks.find((task) => task.id === activeTask);
-    setCases([]);
     if (activeTask === -1 || !taskData) {
+      setCases([]);
       return;
     }
-
-    const timer = setTimeout(() => {
-      setCases(taskData.cluster ? CLUSTERS[taskData.cluster] || [] : []);
-    }, 1000);
-
+    getCasesByClusterDebounce(taskData.cluster.id);
+    const intervalId = setInterval(() => {
+      getCasesByCluster(taskData.cluster.id).then((cases) => {
+        if (cases) {
+          setCases(cases);
+        }
+      });
+    }, 5000);
     return () => {
-      if (timer) {
-        clearTimeout(timer);
-      }
+      clearInterval(intervalId);
     };
   }, [activeTask, draftTasks, activeTasks]);
 
@@ -130,18 +65,24 @@ function CasesBar() {
     <div className={styles.sidebar}>
       <h2 className={styles.title}>{t("components.case.Solutions")}</h2>
       <div className={styles["scroll-block"]}>
-        <div className={styles.content}>
-          {cases.map((item) => (
-            <CaseItem
-              key={item.id}
-              title={item.title}
-              text={item.desc}
-              clickCardHandler={() => handleCaseClick(item.id)}
-              clickButtonHandler={() => hadleCaseButtonClick(item.id)}
-              isActive={activeCase === item.id}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className={styles.loading}>
+            <p>{t("common.Loading")}</p>
+          </div>
+        ) : (
+          <div className={styles.content}>
+            {cases.map((item) => (
+              <CaseItem
+                key={item.id}
+                title={item.title}
+                text={item.solution}
+                clickCardHandler={() => handleCaseClick(item.id)}
+                clickButtonHandler={() => hadleCaseButtonClick(item.id)}
+                isActive={activeCase === item.id}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,21 +1,6 @@
 import { create } from "zustand";
 import { ITask } from "../core/task/types";
 
-/* export enum TaskStatusEnum {
-  Draft,
-  InProgress,
-  Completed,
-} */
-/* export interface ITask {
-  id: number;
-  title: string;
-  desc: string;
-  status: TaskStatusEnum;
-  email?: string;
-  caseId?: number;
-  cluster?: number;
-} */
-
 export type TasksState = {
   activeTask: ITask["id"];
   draftTasks: ITask[];

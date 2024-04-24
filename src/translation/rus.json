@@ -65,13 +65,15 @@
             "AddCase": "Сохранить решение проблемы",
             "ExistingSolutions": "Существующие решения проблемы"
         },
-        "cluster":{
-            "status":{
+        "cluster": {
+            "status": {
                 "solved": "Есть решение",
                 "unsolved": "Без решения"
             },
             "clusters": "Популярные проблемы"
         }
     },
-    "pages": {}
+    "pages": {
+        "noTasks": "Задачи не выбраны"
+    }
 }

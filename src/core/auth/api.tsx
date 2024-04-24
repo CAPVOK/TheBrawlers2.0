@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BASE_REST_URL = import.meta.env.VITE_REST_URL;
+import { BASE_REST_URL } from "../constants";
 
 export const authApi = axios.create({
   baseURL: `https://${BASE_REST_URL}`,

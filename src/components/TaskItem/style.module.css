@@ -5,7 +5,7 @@
   cursor: pointer;
   color: var(--clr-on-primary-container);
   background-color: var(--clr-primary-container);
-  border-radius: 1rem;
+  border-radius: 0.6rem;
   transition: 0.1s;
   box-shadow: var(--box-shadow-1);
 }
@@ -27,7 +27,11 @@
 .task.active {
   color: var(--clr-on-primary);
   background-color: var(--clr-primary);
-}
+  /* outline-color: var(--clr-tertiary-container) !important; */
+}/* 
+.task.active::before {
+  background-color: var(--clr-tertiary-container) !important;
+} */
 
 .task.user {
   padding-left: 2rem;
@@ -37,7 +41,7 @@
 .task.user::before {
   content: "";
   position: absolute;
-  width: 1rem;
+  width: 0.5rem;
   height: 100%;
   top: 0;
   left: 0;

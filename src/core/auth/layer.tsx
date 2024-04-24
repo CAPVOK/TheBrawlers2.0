@@ -1,13 +1,11 @@
 import { useAuth } from "../../store/authSlice";
+import { USER_EMAIL_KEY, USER_TOKEN_KEY } from "../constants";
 import {
   loginUserRequest,
   logoutUserRequest,
   registerUserRequest,
 } from "./requests";
 import { IUserLoginData } from "./types";
-
-export const USER_TOKEN_KEY = "besthack_user_token";
-export const USER_EMAIL_KEY = "besthack_email";
 
 export const loginUser = async (loginData: IUserLoginData) => {
   const userData = await loginUserRequest(loginData);
