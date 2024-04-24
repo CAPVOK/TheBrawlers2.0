@@ -2,7 +2,6 @@ import { create } from "zustand";
 
 export interface ICluster{
     id: number;
-    desc: string;
     title: string;
     solved: boolean;
     frequency: number;

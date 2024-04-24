@@ -48,7 +48,8 @@
         "ChangeLanguage": "Change Language",
         "ChangeTheme": "Change Theme",
         "Home": "Home",
-        "StackOverflow": "StackOverflow"
+        "StackOverflow": "StackOverflow",
+        "AddText": "Enter the text..."
     },
     "components": {
         "task": {
@@ -60,13 +61,16 @@
             "Tasks": "Tasks"
         },
         "case": {
-            "Solutions": "Possible solutions"
+            "AddCase": "Add a solution to the problem",
+            "Solutions": "Possible solutions",
+            "ExistingSolutions": "Existing solutions to the problem"
         },
         "cluster":{
             "status":{
                 "solved": "Solved",
                 "unsolved": "Unsolved"
-            }
+            },
+            "clusters": "Popular issues"
         }
     },
     "pages": {}

@@ -14,7 +14,3 @@
   grid-template-columns: 500px 1fr 0;
   transition: 0.3s;
 }
-
-.body.open {
-  grid-template-columns: 300px 1fr 300px;
-}

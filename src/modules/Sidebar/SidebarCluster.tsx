@@ -20,15 +20,15 @@ function SidebarCluster() {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [updateClusters]);
 
   useEffect(() => {
     if (clusters.length > 0) {
       changeActiveCluster(clusters[0].id);
     }
-  }, [clusters]);
+  }, [changeActiveCluster, clusters]);
 
-  function getStatus(cluster: ICluster, t: any): string {
+  function getStatus(cluster: ICluster): string {
     if (cluster.solved) {
       return t("components.cluster.status.solved");
     } else {
@@ -43,7 +43,7 @@ function SidebarCluster() {
 
   return (
     <div className={styles.sidebar}>
-      <h2 className={styles.title}>{t("Популярные проблемы")}</h2>
+      <h2 className={styles.title}>{t("components.cluster.clusters")}</h2>
       <div className={styles["scroll-block"]}>
         <div className={styles.content}>
           {clusters.map((cluster) => (
@@ -52,7 +52,7 @@ function SidebarCluster() {
               title={cluster.title}
               clickHandler={() => hadleClusterClick(cluster.id)}
               isActive={activeCluster === cluster.id}
-              statusTitle={getStatus(cluster, t)}
+              statusTitle={getStatus(cluster)}
             />
           ))}
         </div>

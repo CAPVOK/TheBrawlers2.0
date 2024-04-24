@@ -48,7 +48,8 @@
         "ChangeLanguage": "Сменить язык",
         "ChangeTheme": "Сменить Тему",
         "Home": "Главная",
-        "StackOverflow": "Примеры решений"
+        "StackOverflow": "Примеры решений",
+        "AddText": "Введите текст..."
     },
     "components": {
         "task": {
@@ -60,13 +61,16 @@
             "Tasks": "Задачи"
         },
         "case": {
-            "Solutions": "Возможные решения"
+            "Solutions": "Возможные решения",
+            "AddCase": "Сохранить решение проблемы",
+            "ExistingSolutions": "Существующие решения проблемы"
         },
         "cluster":{
             "status":{
                 "solved": "Есть решение",
                 "unsolved": "Без решения"
-            }
+            },
+            "clusters": "Популярные проблемы"
         }
     },
     "pages": {}
