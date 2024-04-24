@@ -91,12 +91,13 @@ function CasesBar() {
 
   const [cases, setCases] = useState<ICase[]>([]);
 
-  const { activeTask, tasks } = useTasks();
+  const { activeTask, draftTasks, activeTasks } = useTasks();
   const { activeCase, changeActiveCase, closeCase } = useCases();
 
   // типа запроc
   useEffect(() => {
-    const taskData = tasks.find((task) => task.id === activeTask);
+    const allTasks = [...draftTasks, ...activeTasks];
+    const taskData = allTasks.find((task) => task.id === activeTask);
     setCases([]);
     if (activeTask === -1 || !taskData) {
       return;
@@ -111,7 +112,7 @@ function CasesBar() {
         clearTimeout(timer);
       }
     };
-  }, [activeTask, tasks]);
+  }, [activeTask, draftTasks, activeTasks]);
 
   const handleCaseClick = (id: number) => {
     if (activeCase === id) {
