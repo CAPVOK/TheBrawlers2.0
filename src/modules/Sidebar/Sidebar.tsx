@@ -62,21 +62,25 @@ function Sidebar() {
     <div className={styles.sidebar}>
       <h2 className={styles.title}>{t("components.task.Tasks")}</h2>
       <div className={styles["scroll-block"]}>
-        <div className={styles.content}>
-          {!isLoading &&
-            !!tasks.length &&
-            tasks.map((task) => (
-              <TaskItem
-                key={task.id}
-                title={task.title}
-                clickHandler={() => hadleTaskClick(task.id)}
-                isActive={activeTask === task.id}
-                statusTitle={getStatus(task.status)}
-                isUser={userName === task.user.email}
-              />
-            ))}
-          {isLoading && <p>Loading...</p>}
-        </div>
+        {isLoading ? (
+          <div className={styles.loading}>
+            <p>{t("common.Loading")}</p>
+          </div>
+        ) : (
+          <div className={styles.content}>
+            {!!tasks.length &&
+              tasks.map((task) => (
+                <TaskItem
+                  key={task.id}
+                  title={task.title}
+                  clickHandler={() => hadleTaskClick(task.id)}
+                  isActive={activeTask === task.id}
+                  statusTitle={getStatus(task.status)}
+                  isUser={userName === task.user.email}
+                />
+              ))}
+          </div>
+        )}
       </div>
     </div>
   );
