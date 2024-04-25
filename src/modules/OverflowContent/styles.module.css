@@ -32,3 +32,10 @@
   display: flex;
   flex-direction: row;
 }
+
+.nodata {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}

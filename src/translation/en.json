@@ -75,6 +75,7 @@
     },
     "pages": {
         "noTasks": "No tasks selected",
+        "noClusters": "No problems selected",
         "takeTask": "Get task",
         "Complete": "Complete"
     }

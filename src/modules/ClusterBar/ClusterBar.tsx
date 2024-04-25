@@ -1,4 +1,4 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { useClusters } from "../../store/clasterSlice";
 import styles from "./styles.module.css";
 import { useCases } from "../../store/casesSlice";
@@ -25,16 +25,9 @@ function ClusterBar() {
   const clustersData = [...clusters];
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await getClusters();
-      } catch (error) {
-        console.error("Ошибка при запросе данных:", error);
-      }
-    };
-    fetchData();
-  }, [clusters]);
-  
+    getClusters();
+  }, []);
+
   const hadleClusterClick = (id: number) => {
     changeActiveCluster(id);
     closeCase();
