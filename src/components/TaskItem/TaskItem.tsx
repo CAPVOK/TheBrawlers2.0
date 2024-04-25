@@ -13,8 +13,6 @@ interface ITaskItemProps {
 const TaskItem: FC<ITaskItemProps> = (props) => {
   const { clickHandler, title, isActive, statusTitle, isUser } = props;
 
-  if (isUser) console.log(title);
-
   return (
     <div
       className={clsx(styles.task, {

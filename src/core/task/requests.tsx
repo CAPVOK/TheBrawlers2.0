@@ -2,6 +2,7 @@ import { AxiosResponse } from "axios";
 import { taskApi } from "./api";
 
 import { GetTasksResponseType, ITask, TaskStatusEnum } from "./types";
+import { ICase } from "../case/types";
 
 export const getTasksRequest = async (
   status: TaskStatusEnum
@@ -35,6 +36,21 @@ export const changeTaskStatusRequest = async (
   try {
     const response: AxiosResponse<ITask> = await taskApi.post(
       `/task/${id}/status`
+    );
+    return response;
+  } catch (error) {
+    console.error("Ошибка изменения данных:", error);
+    throw error;
+  }
+};
+
+export const addCasetoTaskRequest = async (
+  taskId: ITask["id"],
+  caseId: ICase["id"]
+): Promise<AxiosResponse<unknown>> => {
+  try {
+    const response: AxiosResponse<unknown> = await taskApi.put(
+      `/task/${taskId}/case/${caseId}`
     );
     return response;
   } catch (error) {

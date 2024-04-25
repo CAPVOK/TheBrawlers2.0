@@ -7,12 +7,15 @@ import { useTranslation } from "react-i18next";
 import { ICase } from "../../core/case/types";
 import { getCasesByCluster } from "../../core/case/layer";
 import { ICluster } from "../../core/cluster/types";
+import { TaskStatusEnum } from "../../core/task/types";
+import { addCasetoTask } from "../../core/task/layer";
 
 function CasesBar() {
   const { t } = useTranslation();
 
   const [cases, setCases] = useState<ICase[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isAddCaseLoadin, setCaseLoading] = useState(false);
 
   const { activeTask, draftTasks, activeTasks } = useTasks();
   const { activeCase, changeActiveCase, closeCase } = useCases();
@@ -65,8 +68,11 @@ function CasesBar() {
     changeActiveCase(id);
   };
 
-  const hadleCaseButtonClick = (id: number) => {
-    console.log(id); /* todo */
+  const hadleCaseButtonClick = (caseId: number) => {
+    if (taskData) {
+      setCaseLoading(true);
+      addCasetoTask(taskData.id, caseId).finally(() => setCaseLoading(false));
+    }
   };
 
   return (
@@ -87,6 +93,11 @@ function CasesBar() {
                 clickCardHandler={() => handleCaseClick(item.id)}
                 clickButtonHandler={() => hadleCaseButtonClick(item.id)}
                 isActive={activeCase === item.id}
+                disabled={
+                  taskData?.status !== TaskStatusEnum.InProgress ||
+                  isAddCaseLoadin ||
+                  taskData.case?.id === activeCase
+                }
               />
             ))}
           </div>

@@ -7,13 +7,15 @@ import { logoutUser } from "../../core/auth/layer";
 import { RoutesEnum } from "../../app/routes";
 import { useDisclosure } from "@mantine/hooks";
 import { Burger } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
 
 const Navbar = () => {
   const { t } = useTranslation();
   const { toggleThemeMode } = useTheme();
   const [opened, { toggle }] = useDisclosure();
+
+  const { pathname } = useLocation();
 
   const toggleMenu = () => {
     toggle();
@@ -24,10 +26,22 @@ const Navbar = () => {
       <div className={styles.leftSection}>
         <p className={styles.title}>The Brawlers2.0</p>
         <Link to={RoutesEnum.Home}>
-          <Button label={t("common.Home")} />
+          <p
+            className={clsx(styles["navbar-link"], {
+              [styles.active]: pathname === RoutesEnum.Home,
+            })}
+          >
+            {t("common.Home")}
+          </p>
         </Link>
         <Link to={RoutesEnum.Stack}>
-          <Button label={t("common.StackOverflow")} />
+          <p
+            className={clsx(styles["navbar-link"], {
+              [styles.active]: pathname === RoutesEnum.Stack,
+            })}
+          >
+            {t("components.cluster.clusters")}
+          </p>
         </Link>
       </div>
       <div className={styles.menu}>
@@ -35,6 +49,7 @@ const Navbar = () => {
           opened={opened}
           onClick={toggleMenu}
           aria-label="Toggle navigation"
+          color="var(--clr-on-surface)"
         />
         <div className={clsx(styles.menuItems, { [styles.show]: opened })}>
           <Button onClick={toggleLanguage} label={t("common.ChangeLanguage")} />

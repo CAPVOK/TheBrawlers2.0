@@ -37,7 +37,8 @@
 
 .disabled {
   cursor: default;
-  background-color: var(--clr-outline-variant);
+  background-color: var(--clr-outline);
+  color: var(--clr-outline-variant);
   /* opacity: 60%; */
 }
 
