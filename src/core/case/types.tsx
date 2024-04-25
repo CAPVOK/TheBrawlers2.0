@@ -12,4 +12,10 @@ export interface ICreateCaseData {
   solution: string;
 }
 
+export interface IChangeCaseData {
+  caseId: ICase["id"];
+  title: string;
+  solution: string;
+}
+
 export type GetCasesByClusterRequestType = ICase[] | null;
