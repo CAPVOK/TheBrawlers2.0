@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_REST_URL, USER_TOKEN_KEY } from "../constants";
 
 const clusterApi = axios.create({
-  baseURL: `https://${BASE_REST_URL}`,
+  baseURL: BASE_REST_URL,
 });
 
 clusterApi.interceptors.request.use(

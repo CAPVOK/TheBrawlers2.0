@@ -44,12 +44,20 @@
         "NoResults": "Нет результатов",
         "NoData": "Нет данных",
         "Login": "Войти",
+        "Register": "Зарегистрироваться",
         "Logout": "Выйти",
         "ChangeLanguage": "Сменить язык",
         "ChangeTheme": "Сменить тему",
         "Home": "Главная",
         "StackOverflow": "Примеры решений",
-        "AddText": "Введите текст..."
+        "AddText": "Введите текст...",
+        "noAccountYet": "Еще нет аккаунта?",
+        "haveAccountAlready": "Уже есть аккаунт?",
+        "createAccount": "Создать аккаунт",
+        "welcomeBack": "С возвращением!",
+        "welcome": "Добро пожаловать!",
+        "YourPassword": "Ваш пароль",
+        "ConfirmThePassword": "Подтвердите пароль"
     },
     "components": {
         "task": {
@@ -77,6 +85,7 @@
         "noTasks": "Задачи не выбраны",
         "noClusters": "Проблемы не выбраны",
         "takeTask": "Взять задачу",
-        "Complete": "Завершить"
+        "Complete": "Завершить",
+        "selectedSolution": "Выбранное решение"
     }
 }

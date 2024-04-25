@@ -13,7 +13,8 @@ function MainPageContent() {
 
   const { t } = useTranslation();
 
-  const { activeTask, closeTask, changeActiveTask } = useTasks();
+  const { activeTask, closeTask, changeActiveTask, draftTasks, activeTasks } =
+    useTasks();
   const { closeCase } = useCases();
 
   const getTask = async (activeTask: number) => {
@@ -24,12 +25,20 @@ function MainPageContent() {
     clearTimeout(timer);
     setPageLoading(false);
   };
+  /* const getTask = async (activeTask: number) => {
+    setTaskData(undefined);
+    setPageLoading(true);
+    await getTaskById(activeTask).then((data) => {
+      setTaskData(data);
+    });
+    setPageLoading(false);
+  }; */
 
   useEffect(() => {
     if (activeTask !== -1) {
       getTask(activeTask);
     }
-  }, [activeTask]);
+  }, [activeTask, draftTasks, activeTasks]);
 
   const closeButtonProps: IButtonProps = {
     onClick: () => {
@@ -53,7 +62,11 @@ function MainPageContent() {
         });
       setButtonsLoading(false);
     },
-    disabled: isButtonsLoading || isPageLoading,
+    disabled:
+      isButtonsLoading ||
+      isPageLoading ||
+      !taskData ||
+      taskData.status === TaskStatusEnum.Completed,
     label:
       taskData && taskData.status === TaskStatusEnum.Draft
         ? t("pages.takeTask")
@@ -71,18 +84,22 @@ function MainPageContent() {
   return (
     <div className={styles.main}>
       <div className={styles.nav}>
-        {taskData && taskData.status !== TaskStatusEnum.Completed && (
-          <Button {...updateButtonProps} />
-        )}
+        <Button {...updateButtonProps} />
         <Button {...closeButtonProps} />
       </div>
       {!isPageLoading && taskData ? (
         <div className={styles.content}>
           <h2>{taskData.title}</h2>
           <p>{taskData.description}</p>
+          {taskData.case?.title && (
+            <div className={styles["solution-block"]}>
+              <p className={styles.title}>{t("pages.selectedSolution")}:</p>
+              <p className={styles.solution}>{taskData.case.title}</p>
+            </div>
+          )}
         </div>
       ) : (
-        <p>Загрузка</p>
+        <p className={styles.nodata}>{t("common.Loading")}</p>
       )}
     </div>
   );

@@ -5,7 +5,7 @@
   cursor: pointer;
   color: var(--clr-on-primary-container);
   background-color: var(--clr-primary-container);
-  border-radius: 0.6rem;
+  border-radius: var(--box-border);
   transition: 0.1s;
   box-shadow: var(--box-shadow-1);
 }
@@ -28,7 +28,7 @@
   color: var(--clr-on-primary);
   background-color: var(--clr-primary);
   /* outline-color: var(--clr-tertiary-container) !important; */
-}/* 
+} /* 
 .task.active::before {
   background-color: var(--clr-tertiary-container) !important;
 } */

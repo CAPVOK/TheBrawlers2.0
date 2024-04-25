@@ -1,10 +1,12 @@
 import { useTasks } from "../../store/tasksSlice";
+import { ICase } from "../case/types";
 import {
+  addCasetoTaskRequest,
   changeTaskStatusRequest,
   getTaskByIdRequest,
   getTasksRequest,
 } from "./requests";
-import { TaskStatusEnum } from "./types";
+import { ITask, TaskStatusEnum } from "./types";
 
 export const getDraftTasks = async () => {
   const response = await getTasksRequest(TaskStatusEnum.Draft);
@@ -32,5 +34,13 @@ export const getTaskById = async (id: number) => {
 
 export const changeTaskStatusById = async (id: number) => {
   const response = await changeTaskStatusRequest(id);
+  return response.data;
+};
+
+export const addCasetoTask = async (
+  taskId: ITask["id"],
+  caseId: ICase["id"]
+) => {
+  const response = await addCasetoTaskRequest(taskId, caseId);
   return response.data;
 };

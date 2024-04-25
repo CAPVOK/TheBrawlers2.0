@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_REST_URL, USER_TOKEN_KEY } from "../constants";
 
 const taskApi = axios.create({
-  baseURL: `https://${BASE_REST_URL}`,
+  baseURL: BASE_REST_URL,
 });
 
 taskApi.interceptors.request.use(

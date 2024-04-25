@@ -4,7 +4,7 @@
   cursor: pointer;
   color: var(--clr-on-tertiary-container);
   background-color: var(--clr-tertiary-container);
-  border-radius: 1rem;
+  border-radius: var(--box-border);
   overflow: hidden;
   transition: 0.1s;
   box-shadow: var(--box-shadow-1);

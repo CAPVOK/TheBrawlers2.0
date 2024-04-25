@@ -44,12 +44,20 @@
         "NoResults": "No Results",
         "NoData": "No Data",
         "Login": "Login",
+        "Register": "Register",
         "Logout": "Logout",
         "ChangeLanguage": "Change Language",
         "ChangeTheme": "Change theme",
         "Home": "Home",
         "StackOverflow": "StackOverflow",
-        "AddText": "Enter the text..."
+        "AddText": "Enter the text...",
+        "noAccountYet": "Do not have an account yet?",
+        "haveAccountAlready": "Have an account already?",
+        "createAccount": "Create Account",
+        "welcomeBack": "Welcome back!",
+        "welcome": "Welcome!",
+        "YourPassword": "Your password",
+        "ConfirmThePassword": "Confirm the password"
     },
     "components": {
         "task": {
@@ -77,6 +85,7 @@
         "noTasks": "No tasks selected",
         "noClusters": "No problems selected",
         "takeTask": "Get task",
-        "Complete": "Complete"
+        "Complete": "Complete",
+        "selectedSolution": "Selected Solution"
     }
 }

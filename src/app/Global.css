@@ -1,5 +1,6 @@
 :root {
   --base-font-size: 16px;
+  --box-border: 0.5rem;
   --box-shadow-1: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
     rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
   --box-shadow-2: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px,
@@ -53,7 +54,7 @@ body {
 
 p {
   font-family: "Montserrat";
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 0;
 }
 

@@ -9,10 +9,18 @@ interface ICaseItemProps {
   title: string;
   text: string;
   isActive: boolean;
+  disabled: boolean;
 }
 
 const CaseItem: FC<ICaseItemProps> = (props) => {
-  const { clickCardHandler, clickButtonHandler, title, isActive, text } = props;
+  const {
+    clickCardHandler,
+    clickButtonHandler,
+    title,
+    isActive,
+    text,
+    disabled,
+  } = props;
 
   const clickHandler = (event: MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -38,6 +46,7 @@ const CaseItem: FC<ICaseItemProps> = (props) => {
           label="Использовать"
           fullWidth
           tabIndex={isActive ? 0 : -1}
+          disabled={disabled}
         />
       </div>
     </div>
