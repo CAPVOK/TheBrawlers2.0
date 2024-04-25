@@ -89,74 +89,70 @@ function OverflowContent() {
 
   return (
     <div className={styles.overflow}>
-      <div className={styles.scrollBar}>
-        {activeCluster ? (
-          <div>
-            <div className={styles.nav}>
-              <div className={styles.clusterTitle}>
-                {isEditing ? (
-                  <>
-                    <input
-                      type="text"
-                      value={editedTitle}
-                      onChange={handleInputChange}
-                      onBlur={handleInputBlur}
-                    />
-                    <IconCheck stroke={2} onClick={handleSaveChanges} />
-                    <IconX stroke={2} onClick={handleCancelChanges} />
-                  </>
-                ) : (
-                  <>
-                    <h1>{editedTitle}</h1>
-                    <IconPencil stroke={2} onClick={handleEditIconClick} />
-                  </>
-                )}
-              </div>
-              <Button {...closeButtonProps} />
+      {activeCluster ? (
+        <div className={styles.content}>
+          <div className={styles.nav}>
+            <div className={styles.clusterTitle}>
+              {isEditing ? (
+                <>
+                  <input
+                    type="text"
+                    value={editedTitle}
+                    onChange={handleInputChange}
+                    onBlur={handleInputBlur}
+                  />
+                  <IconCheck stroke={2} onClick={handleSaveChanges} />
+                  <IconX stroke={2} onClick={handleCancelChanges} />
+                </>
+              ) : (
+                <>
+                  <h1>{editedTitle}</h1>
+                  <IconPencil stroke={2} onClick={handleEditIconClick} />
+                </>
+              )}
             </div>
-            <div className={styles.sendForm}>
-              <TextInput
-                label="Заголовок"
-                withAsterisk
-                placeholder="Введите заголовок"
-                value={heading}
-                onChange={(e) => setHeading(e.target.value)}
-              />
-              <Textarea
-                label="Решение"
-                withAsterisk
-                placeholder="Введите решение проблемы"
-                value={solution}
-                onChange={(e) => setSolution(e.target.value)}
-                autosize
-                minRows={3}
-                maxRows={6}
-              />
-              <Button
-                label={t("components.case.AddCase")}
-                color="success"
-                fullWidth
-                onClick={handleAddCase}
-              />
-            </div>
-            <div className={styles.content}>
-              <h1 className={styles.solutions}>
-                {t("components.case.ExistingSolutions")}
-              </h1>
-              {casesData.map((item) => (
-                <div key={item.id} className={styles.item}>
-                  <h1>
-                    {item.title} #{item.id}
-                  </h1>
-                  <p>{item.solution}</p>
-                </div>
-              ))}
-            </div>
+            <Button {...closeButtonProps} />
           </div>
-        ) : (
-          <p>Загрузка</p>
-        )}
-      </div>
+          <div className={styles.sendForm}>
+            <TextInput
+              label="Заголовок"
+              withAsterisk
+              placeholder="Введите заголовок"
+              value={heading}
+              onChange={(e) => setHeading(e.target.value)}
+            />
+            <Textarea
+              label="Решение"
+              withAsterisk
+              placeholder="Введите решение проблемы"
+              value={solution}
+              onChange={(e) => setSolution(e.target.value)}
+              autosize
+              minRows={3}
+              maxRows={6}
+            />
+            <Button
+              label={t("components.case.AddCase")}
+              color="success"
+              fullWidth
+              onClick={handleAddCase}
+            />
+          </div>
+          <h1 className={styles.title}>
+            {t("components.case.ExistingSolutions")}
+          </h1>
+          {casesData.map((item) => (
+            <div key={item.id} className={styles.item}>
+              <h1>
+                {item.title} #{item.id}
+              </h1>
+              <p>{item.solution}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>Загрузка</p>
+      )}
     </div>
   );
 }
