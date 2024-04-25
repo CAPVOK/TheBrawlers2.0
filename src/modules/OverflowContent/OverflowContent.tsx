@@ -14,7 +14,7 @@ import {
 } from "../../core/case/layer";
 import { ICase } from "../../core/case/types";
 import { useDisclosure } from "@mantine/hooks";
-import { updateClusterName } from "../../core/cluster/layer";
+import { getClusters, updateClusterName } from "../../core/cluster/layer";
 
 function OverflowContent() {
   const { t } = useTranslation();
@@ -65,13 +65,9 @@ function OverflowContent() {
     setIsEditing(true);
   };
 
-  const handleInputBlur = () => {
-    setIsEditing(false);
-  };
-
   const handleSaveChanges = () => {
-    console.log(activeCluster);
     updateClusterName({ id: activeCluster, name: editedTitle });
+    getClusters();
     setIsEditing(false);
   };
 
@@ -90,16 +86,8 @@ function OverflowContent() {
       caseId: caseId,
       title: headingEditing,
       solution: solutionEditing,
-    }).then(() => {
-      if (activeCluster !== -1) {
-        getCasesByCluster(activeCluster).then((data) => {
-          if (data) {
-            setCasesData(data);
-          }
-        });
-      }
-      close();
     });
+    close();
     setSolutionEditing("");
     setHeadingEditing("");
   };
@@ -150,7 +138,6 @@ function OverflowContent() {
                     type="text"
                     value={editedTitle}
                     onChange={handleInputChange}
-                    onBlur={handleInputBlur}
                   />
                   <IconCheck
                     stroke={2}
