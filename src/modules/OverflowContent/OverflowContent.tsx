@@ -65,9 +65,9 @@ function OverflowContent() {
     setIsEditing(true);
   };
 
-  const handleSaveChanges = () => {
-    updateClusterName({ id: activeCluster, name: editedTitle });
-    getClusters();
+  const handleSaveChanges = async () => {
+    await updateClusterName({ id: activeCluster, name: editedTitle });
+    await getClusters();
     setIsEditing(false);
   };
 
