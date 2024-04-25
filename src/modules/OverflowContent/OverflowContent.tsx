@@ -86,6 +86,14 @@ function OverflowContent() {
       caseId: caseId,
       title: headingEditing,
       solution: solutionEditing,
+    }).then(() => {
+      if (activeCluster !== -1) {
+        getCasesByCluster(activeCluster).then((data) => {
+          if (data) {
+            setCasesData(data);
+          }
+        });
+      }
     });
     close();
     setSolutionEditing("");

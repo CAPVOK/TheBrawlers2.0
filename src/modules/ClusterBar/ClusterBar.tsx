@@ -11,17 +11,9 @@ function ClusterBar() {
   const { activeCluster, changeActiveCluster, clusters } = useClusters();
   const { closeCase } = useCases();
 
-  /* useEffect(() => {
-    const timer = setTimeout(() => {
-      updateClusters(
-        CLUSTERS.slice().sort((a, b) => b.frequency - a.frequency)
-      );
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [updateClusters]); */
-
-  const clustersData = [...clusters];
+  const sortedClusters = [...clusters].sort(
+    (a, b) => b.frequency - a.frequency
+  );
 
   useEffect(() => {
     getClusters();
@@ -37,7 +29,7 @@ function ClusterBar() {
       <h2 className={styles.title}>{t("components.cluster.clusters")}</h2>
       <div className={styles["scroll-block"]}>
         <div className={styles.content}>
-          {clustersData.map((item) => (
+          {sortedClusters.map((item) => (
             <ClusterItem
               key={item.id}
               title={item.name}
