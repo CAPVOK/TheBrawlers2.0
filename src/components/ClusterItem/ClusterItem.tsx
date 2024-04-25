@@ -6,11 +6,11 @@ interface IClusterItemProps {
   clickHandler: () => void;
   title: string;
   isActive: boolean;
-  statusTitle: string;
+  frequency: number;
 }
 
 const ClusterItem: FC<IClusterItemProps> = (props) => {
-  const { clickHandler, title, isActive, statusTitle } = props;
+  const { clickHandler, title, isActive, frequency } = props;
   return (
     <div
       className={clsx(styles.task, {
@@ -20,7 +20,7 @@ const ClusterItem: FC<IClusterItemProps> = (props) => {
       tabIndex={0}
     >
       <p className={styles.text}>{title}</p>
-      <p className={styles.status}>{statusTitle}</p>
+      <p className={styles.status}>Frequency: {frequency}</p>
     </div>
   );
 };

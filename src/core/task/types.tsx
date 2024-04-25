@@ -1,5 +1,6 @@
 import { IUser } from "../auth/types";
-import { ICase, ICluster } from "../case/types";
+import { ICase } from "../case/types";
+import { ICluster } from "../cluster/types";
 
 export interface ITask {
   id: number;

@@ -2,12 +2,12 @@ import {
   createCaseToClusterRequest,
   getCasesByClusterRequest,
 } from "./requests";
-import { ICluster, ICreateCaseData } from "./types";
+import { ICluster } from "../cluster/types";
+import { ICreateCaseData } from "./types";
 
 export const getCasesByCluster = async (cluster: ICluster["id"]) => {
   const response = await getCasesByClusterRequest(cluster);
-  const cases = response.data;
-  return cases;
+  return response.data;
 };
 
 export const createCaseToCluster = async (data: ICreateCaseData) => {

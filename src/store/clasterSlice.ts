@@ -1,12 +1,5 @@
 import { create } from "zustand";
-
-export interface ICluster {
-  id: number;
-  title: string;
-  solved: boolean;
-  frequency: number;
-  caseId?: number;
-}
+import { ICluster } from "../core/cluster/types";
 
 export type ClusterState = {
   activeCluster: ICluster["id"];

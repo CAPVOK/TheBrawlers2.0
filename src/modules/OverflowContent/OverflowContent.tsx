@@ -5,12 +5,12 @@ import { useClusters } from "../../store/clasterSlice";
 import TextEditor from "../TextEditor/TextEditor";
 import { useTranslation } from "react-i18next";
 import { TextInput } from "@mantine/core";
-import { ChangeEvent, useState, useEffect } from "react";
+import { ChangeEvent, useState } from "react";
 import { IconPencil, IconCheck, IconX } from "@tabler/icons-react";
 
 function OverflowContent() {
   const { t } = useTranslation();
-  const { activeCluster, closeCluster } = useClusters();
+  const { closeCluster } = useClusters();
   const { closeCase } = useCases();
   const [title, setTitle] = useState("");
   const [isEditing, setIsEditing] = useState(false);

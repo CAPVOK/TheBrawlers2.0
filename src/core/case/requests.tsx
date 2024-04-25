@@ -3,9 +3,9 @@ import { caseApi } from "./api";
 
 import {
   GetCasesByClusterRequestType,
-  ICluster,
   ICreateCaseData,
 } from "./types";
+import { ICluster } from "../cluster/types";
 
 export const getCasesByClusterRequest = async (
   clusterId: ICluster["id"]

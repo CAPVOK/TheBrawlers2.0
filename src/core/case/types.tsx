@@ -1,8 +1,4 @@
-export interface ICluster {
-  id: number;
-  name: string;
-  frequency: number;
-}
+import { ICluster } from "../cluster/types";
 
 export interface ICase {
   id: number;

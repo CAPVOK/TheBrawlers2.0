@@ -6,7 +6,7 @@ import { useTasks } from "../../store/tasksSlice";
 import { useTranslation } from "react-i18next";
 import { ICase } from "../../core/case/types";
 import { getCasesByCluster } from "../../core/case/layer";
-import { ICluster } from "../../store/clasterSlice";
+import { ICluster } from "../../core/cluster/types";
 
 function CasesBar() {
   const { t } = useTranslation();
