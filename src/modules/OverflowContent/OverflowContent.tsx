@@ -14,6 +14,7 @@ import {
 } from "../../core/case/layer";
 import { ICase } from "../../core/case/types";
 import { useDisclosure } from "@mantine/hooks";
+import { updateClusterName } from "../../core/cluster/layer";
 
 function OverflowContent() {
   const { t } = useTranslation();
@@ -38,15 +39,6 @@ function OverflowContent() {
     }
   }, [activeCluster]);
 
-  useEffect(() => {
-    const clusterData = [...clusters].find(
-      (cluster) => cluster.id === activeCluster
-    );
-    if (clusterData) {
-      setEditedTitle(clusterData.name);
-    }
-  }, [activeCluster, clusters]);
-
   const closeButtonProps: IButtonProps = {
     onClick: () => {
       closeCluster();
@@ -55,6 +47,15 @@ function OverflowContent() {
     label: t("common.Close"),
     color: "error",
   };
+
+  useEffect(() => {
+    const clusterData = [...clusters].find(
+      (cluster) => cluster.id === activeCluster
+    );
+    if (clusterData) {
+      setEditedTitle(clusterData.name);
+    }
+  }, [activeCluster, clusters]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEditedTitle(e.target.value);
@@ -69,10 +70,18 @@ function OverflowContent() {
   };
 
   const handleSaveChanges = () => {
+    console.log(activeCluster);
+    updateClusterName({ id: activeCluster, name: editedTitle });
     setIsEditing(false);
   };
 
   const handleCancelChanges = () => {
+    const clusterData = [...clusters].find(
+      (cluster) => cluster.id === activeCluster
+    );
+    if (clusterData) {
+      setEditedTitle(clusterData.name);
+    }
     setIsEditing(false);
   };
 
@@ -89,6 +98,7 @@ function OverflowContent() {
           }
         });
       }
+      close();
     });
     setSolutionEditing("");
     setHeadingEditing("");

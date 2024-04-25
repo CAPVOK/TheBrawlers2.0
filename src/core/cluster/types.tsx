@@ -4,4 +4,9 @@ export interface ICluster {
   frequency: number;
 }
 
+export interface IChangeClusterName{
+  id: ICluster["id"];
+  name: string;
+}
+
 export type GetClustersType = ICluster[] | null;
