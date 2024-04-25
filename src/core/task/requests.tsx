@@ -85,7 +85,7 @@ export const addSolutionToTaskRequest = async (
 ): Promise<AxiosResponse<unknown>> => {
   try {
     const response: AxiosResponse<unknown> = await taskApi.put(
-      `/tasks/${data.id}`,
+      `/task/${data.id}`,
       {
         solution: data.solution,
       }
