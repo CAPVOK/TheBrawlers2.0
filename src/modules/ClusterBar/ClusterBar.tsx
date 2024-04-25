@@ -9,7 +9,6 @@ import { getClusters } from "../../core/cluster/layer";
 function ClusterBar() {
   const { t } = useTranslation();
   const { activeCluster, changeActiveCluster, clusters } = useClusters();
-  // const [clustersData, setClustersData] = useState<ICluster[]>([]);
   const { closeCase } = useCases();
 
   /* useEffect(() => {
