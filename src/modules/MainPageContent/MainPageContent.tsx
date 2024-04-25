@@ -4,12 +4,18 @@ import { useCases } from "../../store/casesSlice";
 import { useTasks } from "../../store/tasksSlice";
 import styles from "./styles.module.css";
 import { ITask, TaskStatusEnum } from "../../core/task/types";
-import { changeTaskStatusById, getTaskById } from "../../core/task/layer";
+import {
+  addSolutionToTask,
+  changeTaskStatusById,
+  getTaskById,
+} from "../../core/task/layer";
 import { useTranslation } from "react-i18next";
+import { Textarea } from "@mantine/core";
 function MainPageContent() {
   const [taskData, setTaskData] = useState<ITask>();
   const [isPageLoading, setPageLoading] = useState(false);
   const [isButtonsLoading, setButtonsLoading] = useState(false);
+  const [solution, setSolution] = useState("");
 
   const { t } = useTranslation();
 
@@ -25,6 +31,7 @@ function MainPageContent() {
     clearTimeout(timer);
     setPageLoading(false);
   };
+
   /* const getTask = async (activeTask: number) => {
     setTaskData(undefined);
     setPageLoading(true);
@@ -47,6 +54,18 @@ function MainPageContent() {
     },
     label: t("common.Close"),
     color: "error",
+  };
+
+  const handleAddSolution = () => {
+    addSolutionToTask({
+      id: activeTask,
+      solution: solution,
+    }).then(() => {
+      if (activeTask !== -1) {
+        getTask(activeTask);
+      }
+    });
+    setSolution("");
   };
 
   const updateButtonProps: IButtonProps = {
@@ -97,6 +116,30 @@ function MainPageContent() {
               <p className={styles.solution}>{taskData.case.title}</p>
             </div>
           )}
+          {taskData.solution && (
+            <div className={styles["solution-block"]}>
+              <p className={styles.title}>{t("pages.selectedSolution")}:</p>
+              <p className={styles.solution}>{taskData.solution}</p>
+            </div>
+          )}
+          <div className={styles.sendForm}>
+            <Textarea
+              label={t("components.case.Solution")}
+              withAsterisk
+              placeholder={t("components.case.AddSolutionText")}
+              value={solution}
+              onChange={(e) => setSolution(e.target.value)}
+              autosize
+              minRows={3}
+              maxRows={6}
+            />
+            <Button
+              label={t("components.case.AddCase")}
+              color="success"
+              fullWidth
+              onClick={handleAddSolution}
+            />
+          </div>
         </div>
       ) : (
         <p className={styles.nodata}>{t("common.Loading")}</p>

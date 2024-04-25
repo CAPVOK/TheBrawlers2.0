@@ -5,14 +5,23 @@ import styles from "./styles.module.css";
 import { useCases } from "../../store/casesSlice";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../store/authSlice";
-import { getActiveTasks, getDraftTasks } from "../../core/task/layer";
+import {
+  addNewTask,
+  getActiveTasks,
+  getDraftTasks,
+} from "../../core/task/layer";
 import { TaskStatusEnum } from "../../core/task/types";
+import { Modal, TextInput, Textarea } from "@mantine/core";
+import Button from "../../components/UI/Button/Button";
+import { useDisclosure } from "@mantine/hooks";
 
 function Sidebar() {
   const { t } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
-
+  const [opened, { open, close }] = useDisclosure(false);
+  const [taskName, setTaskName] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
   const { userName } = useAuth();
   const { activeTask, changeActiveTask, draftTasks, activeTasks } = useTasks();
   const { closeCase } = useCases();
@@ -58,9 +67,54 @@ function Sidebar() {
     closeCase();
   };
 
+  const handleAddTask = () => {
+    addNewTask({
+      title: taskName,
+      description: taskDescription,
+    });
+    close();
+    setTaskName("");
+    setTaskDescription("");
+  };
+
   return (
     <div className={styles.sidebar}>
-      <h2 className={styles.title}>{t("components.task.Tasks")}</h2>
+      <div className={styles.header}>
+        <h2 className={styles.title}>{t("components.task.Tasks")}</h2>
+        <Button onClick={open} label={t("common.Add")} />
+        <Modal
+          opened={opened}
+          onClose={close}
+          title={t("components.task.AddTask")}
+          centered
+        >
+          <TextInput
+            label={t("common.Heading")}
+            withAsterisk
+            placeholder={t("common.AddText")}
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
+          />
+          <Textarea
+            label={t("common.Description")}
+            withAsterisk
+            placeholder={t("common.AddText")}
+            value={taskDescription}
+            onChange={(e) => setTaskDescription(e.target.value)}
+            autosize
+            minRows={3}
+            maxRows={6}
+          />
+          <div className={styles.margins}>
+            <Button
+              label={t("common.Save")}
+              color="success"
+              fullWidth
+              onClick={() => handleAddTask()}
+            />
+          </div>
+        </Modal>
+      </div>
       <div className={styles["scroll-block"]}>
         {isLoading ? (
           <div className={styles.loading}>

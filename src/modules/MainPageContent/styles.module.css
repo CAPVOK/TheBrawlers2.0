@@ -38,3 +38,13 @@
 .solution-block .solution {
   font-weight: 500;
 }
+
+.sendForm {
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--clr-surface-container-high);
+  border-radius: var(--box-border);
+  box-shadow: var(--box-shadow-2);
+}

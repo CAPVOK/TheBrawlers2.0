@@ -1,7 +1,13 @@
 import { AxiosResponse } from "axios";
 import { taskApi } from "./api";
 
-import { GetTasksResponseType, ITask, TaskStatusEnum } from "./types";
+import {
+  GetTasksResponseType,
+  IAddSolutionToTask,
+  ICreateTask,
+  ITask,
+  TaskStatusEnum,
+} from "./types";
 import { ICase } from "../case/types";
 
 export const getTasksRequest = async (
@@ -55,6 +61,38 @@ export const addCasetoTaskRequest = async (
     return response;
   } catch (error) {
     console.error("Ошибка изменения данных:", error);
+    throw error;
+  }
+};
+
+export const addNewTaskRequest = async (
+  data: ICreateTask
+): Promise<AxiosResponse<unknown>> => {
+  try {
+    const response: AxiosResponse<unknown> = await taskApi.post(`/task/`, {
+      title: data.title,
+      description: data.description,
+    });
+    return response;
+  } catch (error) {
+    console.log("Ошибка при добавлении задачи:", error);
+    throw error;
+  }
+};
+
+export const addSolutionToTaskRequest = async (
+  data: IAddSolutionToTask
+): Promise<AxiosResponse<unknown>> => {
+  try {
+    const response: AxiosResponse<unknown> = await taskApi.put(
+      `/tasks/${data.id}`,
+      {
+        solution: data.solution,
+      }
+    );
+    return response;
+  } catch (error) {
+    console.error("Ошибка создания решения:", error);
     throw error;
   }
 };

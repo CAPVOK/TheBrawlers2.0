@@ -58,7 +58,9 @@
     "welcome": "Welcome!",
     "YourPassword": "Your password",
     "ConfirmThePassword": "Confirm the password",
-    "Heading": "Heading"
+    "Heading": "Heading",
+    "Add": "Add",
+    "Description": "Описание"
   },
   "components": {
     "task": {
@@ -67,6 +69,7 @@
         "progress": "Progress",
         "uknown": "Uknown"
       },
+      "AddTask": "Add new task",
       "Tasks": "Tasks"
     },
     "case": {

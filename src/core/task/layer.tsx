@@ -2,11 +2,18 @@ import { useTasks } from "../../store/tasksSlice";
 import { ICase } from "../case/types";
 import {
   addCasetoTaskRequest,
+  addNewTaskRequest,
+  addSolutionToTaskRequest,
   changeTaskStatusRequest,
   getTaskByIdRequest,
   getTasksRequest,
 } from "./requests";
-import { ITask, TaskStatusEnum } from "./types";
+import {
+  IAddSolutionToTask,
+  ICreateTask,
+  ITask,
+  TaskStatusEnum,
+} from "./types";
 
 export const getDraftTasks = async () => {
   const response = await getTasksRequest(TaskStatusEnum.Draft);
@@ -42,5 +49,15 @@ export const addCasetoTask = async (
   caseId: ICase["id"]
 ) => {
   const response = await addCasetoTaskRequest(taskId, caseId);
+  return response.data;
+};
+
+export const addNewTask = async (data: ICreateTask) => {
+  const response = await addNewTaskRequest(data);
+  return response.data;
+};
+
+export const addSolutionToTask = async (data: IAddSolutionToTask) => {
+  const response = await addSolutionToTaskRequest(data);
   return response.data;
 };

@@ -6,6 +6,7 @@ export interface ITask {
   id: number;
   title: string;
   description: string;
+  solution: string;
   status: TaskStatusEnum;
   created_at: string;
   formed_at?: string;
@@ -19,6 +20,16 @@ export enum TaskStatusEnum {
   Draft,
   InProgress,
   Completed,
+}
+
+export interface ICreateTask {
+  title: string;
+  description: string;
+}
+
+export interface IAddSolutionToTask {
+  id: ITask["id"];
+  solution: string;
 }
 
 export type GetTasksResponseType = ITask[] | null;

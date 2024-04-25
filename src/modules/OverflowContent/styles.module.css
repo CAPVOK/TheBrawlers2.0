@@ -40,7 +40,7 @@ h1.title {
   word-wrap: break-word;
 }
 
-.reverse{
+.reverse {
   display: flex;
   flex-direction: column-reverse;
   gap: 1rem;
@@ -69,12 +69,12 @@ h1.title {
   font-size: 2rem;
 }
 
-.headingSolution{
+.headingSolution {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.margins{
+.margins {
   margin: 1rem 0;
 }
