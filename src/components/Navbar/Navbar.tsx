@@ -8,6 +8,7 @@ import { RoutesEnum } from "../../app/routes";
 import { useDisclosure } from "@mantine/hooks";
 import { Burger } from "@mantine/core";
 import { Link } from "react-router-dom";
+import clsx from "clsx";
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -35,11 +36,8 @@ const Navbar = () => {
           onClick={toggleMenu}
           aria-label="Toggle navigation"
         />
-        <div className={`${styles.menuItems} ${opened ? styles.show : ''}`}>
-          <Button
-            onClick={toggleLanguage}
-            label={t("common.ChangeLanguage")}
-          />
+        <div className={clsx(styles.menuItems, { [styles.show]: opened })}>
+          <Button onClick={toggleLanguage} label={t("common.ChangeLanguage")} />
           <Button
             onClick={toggleThemeMode}
             color="tertiary"
