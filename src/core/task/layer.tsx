@@ -1,3 +1,4 @@
+import { useAuth } from "../../store/authSlice";
 import { useTasks } from "../../store/tasksSlice";
 import { ICase } from "../case/types";
 import {
@@ -26,8 +27,10 @@ export const getDraftTasks = async () => {
 
 export const getActiveTasks = async () => {
   const response = await getTasksRequest(TaskStatusEnum.InProgress);
+  const email = useAuth.getState().userName;
   const tasks = response.data;
-  useTasks.getState().updateActiveTasks(tasks || []);
+  const filteredTasks = tasks?.filter((task) => task.user.email === email);
+  useTasks.getState().updateActiveTasks(filteredTasks || []);
   return response.data;
 };
 
