@@ -96,6 +96,7 @@
     "noClusters": "No problems selected",
     "takeTask": "Get task",
     "Complete": "Complete",
-    "selectedSolution": "Selected Solution"
+    "selectedSolution": "Selected solution",
+    "selectedCase": "Selected ready-made solution"
   }
 }

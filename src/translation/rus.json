@@ -96,6 +96,7 @@
     "noClusters": "Проблемы не выбраны",
     "takeTask": "Взять задачу",
     "Complete": "Завершить",
-    "selectedSolution": "Выбранное решение"
+    "selectedSolution": "Выбранное решение",
+    "selectedCase": "Выбранное готовое решение проблемы"
   }
 }

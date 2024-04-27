@@ -134,7 +134,7 @@ function MainPageContent() {
           {taskData.case?.title && (
             <div className={styles["solution-block"]}>
               <div className={styles.solutionHead}>
-                <p className={styles.title}>{t("pages.selectedSolution")}</p>
+                <p className={styles.title}>{t("pages.selectedCase")}</p>
                 <Button
                   label={t("common.CancelSolution")}
                   color="primary"
