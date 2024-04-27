@@ -9,6 +9,7 @@ import {
 import { ICluster } from "../cluster/types";
 import { notifications } from "@mantine/notifications";
 import { t } from "i18next";
+import classes from "../notifications.module.css";
 
 export const getCasesByClusterRequest = async (
   clusterId: ICluster["id"]
@@ -22,7 +23,8 @@ export const getCasesByClusterRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.cases.GetCasesError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -42,7 +44,8 @@ export const createCaseToClusterRequest = async (
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.cases.CreateCasesSuccessful"),
+      classNames: classes,
     });
     return response;
   } catch (error) {
@@ -50,7 +53,8 @@ export const createCaseToClusterRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.cases.CreateCasesError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -62,14 +66,16 @@ export const deleteCaseRequest = async (caseId: number): Promise<void> => {
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.cases.DeleteCasesSuccessful"),
+      classNames: classes,
     });
   } catch (error) {
     console.error("Ошибка при удалении:", error);
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.cases.DeleteCasesError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -89,7 +95,8 @@ export const updateCaseRequest = async (
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.cases.UpdateCasesSuccessful"),
+      classNames: classes,
     });
     return response;
   } catch (error) {
@@ -97,7 +104,8 @@ export const updateCaseRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.cases.UpdateCasesError"),
+      classNames: classes,
     });
     throw error;
   }

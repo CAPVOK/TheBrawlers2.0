@@ -12,7 +12,7 @@
     "Error": "Ошибка",
     "ErrorRequest": "Произошла ошибка при отправке запроса",
     "Warning": "Предупреждение",
-    "Success": "Успех",
+    "Success": "Успешный успех!",
     "SuccessRequest": "Успешно выполнено!",
     "Confirm": "Подтвердить",
     "Submit": "Отправить",
@@ -101,5 +101,45 @@
     "Complete": "Завершить",
     "selectedSolution": "Выбранное решение",
     "selectedCase": "Выбранное готовое решение проблемы"
+  },
+  "notifications": {
+    "auth": {
+      "loginSuccessful": "Успешная авторизация",
+      "LogoutError": "Ошибка при выходе",
+      "registrationSuccessful": "Успешная регистрация",
+      "LoginError": "Ошибка при авторизации",
+      "logoutSuccessful": "Успешный выход",
+      "RegistrationError": "Ошибка при регистрации"
+    },
+    "cases": {
+      "GetCasesError": "Ошибка при получении типовых ошибок",
+      "CreateCasesSuccessful": "Успешное создание решения для типовой ошибки",
+      "CreateCasesError": "Ошибка при создании решения для типовой ошибки",
+      "UpdateCasesSuccessful": "Успешное обновление решения для типовой ошибки",
+      "UpdateCasesError": "Ошибка при обновлении решения для типовой ошибки",
+      "DeleteCasesSuccessful": "Успешное удаление решения для типовой ошибки",
+      "DeleteCasesError": "Ошибка при удалении решения для типовой ошибки"
+    },
+    "clusters": {
+      "GetClustersError": "Ошибка при получении решений для типовых ошибок",
+      "UpdateClustersSuccessfull": "Успешное обновление названия типовой ошибки",
+      "UpdateClustersError": "Ошибка при обновлении названия типовой ошибки"
+    },
+    "tasks": {
+      "GetTasksError": "Ошибка при получении задач",
+      "GetTaskError": "Ошибка при получении задачи",
+      "UpdateStatusSuccessfull": "Успешное изменение статуса задачи",
+      "UpdateStatusError": "Ошибка при изменении статуса задачи",
+      "addCaseSuccessfull": "Успешный выбор решения для задачи",
+      "addCaseError": "Ошибка при выборе решения для задачи",
+      "newTaskSuccessfull": "Успешное создание новой задачи",
+      "newTaskError": "Ошибка при создании новой задачи",
+      "addSolutionSuccessfull": "Успешное добавление решения для задачи",
+      "addSolutionError": "Ошибка при добавлении решения для задачи",
+      "deleteCaseSuccessful": "Успешное удаление выбранного решения для задачи",
+      "deleteCaseError": "Ошибка при удалении выбранного решения для задачи",
+      "deleteSolutionSuccessfull": "Успешное удаление решения для задачи",
+      "deleteSolutionError": "Ошибка при удалении решения для задачи"
+    }
   }
 }

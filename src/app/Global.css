@@ -11,6 +11,32 @@
     rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
 }
 
+/* total width */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 14px 14px transparent;
+  border: solid 4px transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 14px 14px var(--clr-outline);
+  border: solid 4px transparent;
+  border-radius: 14px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: inset 0 0 14px 14px var(--clr-on-surface-variant);
+  border: solid 4px transparent;
+}
+
+/* set button(top and bottom of the scrollbar) */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
 @font-face {
   font-family: "Montserrat";
   src: url("/src/assets/fonts/Montserrat/Montserrat-Black.ttf")

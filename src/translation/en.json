@@ -101,5 +101,45 @@
     "Complete": "Complete",
     "selectedSolution": "Selected solution",
     "selectedCase": "Selected ready-made solution"
+  },
+  "notifications": {
+    "auth": {
+      "loginSuccessful": "Successful authentication",
+      "LogoutError": "Error logging out",
+      "registrationSuccessful": "Successful registration",
+      "LoginError": "Error logging in",
+      "logoutSuccessful": "Successful logout",
+      "RegistrationError": "Error registering"
+    },
+    "cases": {
+      "GetCasesError": "Error getting cases",
+      "CreateCasesSuccessful": "Successful creation of a solution for a typical error",
+      "CreateCasesError": "Error creating a solution for a typical error",
+      "UpdateCasesSuccessful": "Successful update of a solution for a typical error",
+      "UpdateCasesError": "Error updating a solution for a typical error",
+      "DeleteCasesSuccessful": "Successful deletion of a solution for a typical error",
+      "DeleteCasesError": "Error deleting a solution for a typical error"
+    },
+    "clusters": {
+      "GetClustersError": "Error getting solutions for typical errors",
+      "UpdateClustersSuccessfull": "Successful update of a typical error name",
+      "UpdateClustersError": "Error updating a typical error name"
+    },
+    "tasks": {
+      "GetTasksError": "Error getting tasks",
+      "GetTaskError": "Error getting task",
+      "UpdateStatusSuccessfull": "Successful task status change",
+      "UpdateStatusError": "Error changing task status",
+      "addCaseSuccessfull": "Successful selection of a solution for a task",
+      "addCaseError": "Error selecting a solution for a task",
+      "newTaskSuccessfull": "Successful creation of a new task",
+      "newTaskError": "Error creating a new task",
+      "addSolutionSuccessfull": "Successful addition of a solution for a task",
+      "addSolutionError": "Error adding a solution for a task",
+      "deleteCaseSuccessful": "Successful deletion of a selected solution for a task",
+      "deleteCaseError": "Error deleting a selected solution for a task",
+      "deleteSolutionSuccessfull": "Successful deletion of a solution for a task",
+      "deleteSolutionError": "Error deleting a solution for a task"
+    }
   }
 }

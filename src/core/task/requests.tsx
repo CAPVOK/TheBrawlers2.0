@@ -11,6 +11,7 @@ import {
 import { ICase } from "../case/types";
 import { notifications } from "@mantine/notifications";
 import { t } from "i18next";
+import classes from "../notifications.module.css";
 
 export const getTasksRequest = async (
   status: TaskStatusEnum
@@ -25,7 +26,8 @@ export const getTasksRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.tasks.GetTasksError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -42,7 +44,8 @@ export const getTaskByIdRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.tasks.GetTaskError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -58,7 +61,8 @@ export const changeTaskStatusRequest = async (
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.tasks.UpdateStatusSuccessfull"),
+      classNames: classes,
     });
     return response;
   } catch (error) {
@@ -66,7 +70,8 @@ export const changeTaskStatusRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.tasks.UpdateStatusError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -83,7 +88,8 @@ export const addCasetoTaskRequest = async (
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.tasks.addCaseSuccessfull"),
+      classNames: classes,
     });
     return response;
   } catch (error) {
@@ -91,7 +97,8 @@ export const addCasetoTaskRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.tasks.addCaseError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -108,7 +115,8 @@ export const addNewTaskRequest = async (
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.tasks.newTaskSuccessfull"),
+      classNames: classes,
     });
     return response;
   } catch (error) {
@@ -116,7 +124,8 @@ export const addNewTaskRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.tasks.newTaskError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -135,7 +144,8 @@ export const addSolutionToTaskRequest = async (
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.tasks.addSolutionSuccessfull"),
+      classNames: classes,
     });
     return response;
   } catch (error) {
@@ -143,45 +153,54 @@ export const addSolutionToTaskRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.tasks.addSolutionError"),
+      classNames: classes,
     });
     throw error;
   }
 };
 
-export const removeCaseFromTaskByTaskIDRequest = async (id: number): Promise<void> => {
+export const removeCaseFromTaskByTaskIDRequest = async (
+  id: number
+): Promise<void> => {
   try {
     await taskApi.delete(`/task/${id}/case`);
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.tasks.deleteCaseSuccessful"),
+      classNames: classes,
     });
   } catch (error) {
     console.error("Ошибка при удалении:", error);
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.tasks.deleteCaseError"),
+      classNames: classes,
     });
     throw error;
   }
 };
 
-export const removeSolutionFromTaskByTaskIDRequest = async (id: number): Promise<void> => {
+export const removeSolutionFromTaskByTaskIDRequest = async (
+  id: number
+): Promise<void> => {
   try {
     await taskApi.delete(`/task/${id}/solution`);
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.tasks.deleteSolutionSuccessfull"),
+      classNames: classes,
     });
   } catch (error) {
     console.error("Ошибка при удалении:", error);
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.tasks.deleteSolutionError"),
+      classNames: classes,
     });
     throw error;
   }

@@ -8,6 +8,7 @@ import {
 import { authApi } from "./api";
 import { notifications } from "@mantine/notifications";
 import { t } from "i18next";
+import classes from "../notifications.module.css";
 
 export const loginUserRequest = async (
   body: IUserLoginData
@@ -20,14 +21,16 @@ export const loginUserRequest = async (
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.auth.loginSuccessful"),
+      classNames: classes,
     });
     return response;
   } catch (error) {
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.auth.LoginError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -44,7 +47,8 @@ export const registerUserRequest = async (
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.auth.registrationSuccessful"),
+      classNames: classes,
     });
     return response;
   } catch (error) {
@@ -52,7 +56,8 @@ export const registerUserRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.auth.RegistrationError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -66,14 +71,16 @@ export const logoutUserRequest = async (token: string) => {
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.auth.logoutSuccessful"),
+      classNames: classes,
     });
   } catch (error) {
     console.error("Ошибка выхода:", error);
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.auth.LogoutError"),
+      classNames: classes,
     });
     throw error;
   }

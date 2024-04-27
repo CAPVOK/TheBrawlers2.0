@@ -3,6 +3,7 @@ import { clusterApi } from "./api";
 import { GetClustersType, IChangeClusterName } from "./types";
 import { notifications } from "@mantine/notifications";
 import { t } from "i18next";
+import classes from "../notifications.module.css";
 
 export const getClustersRequest = async (): Promise<
   AxiosResponse<GetClustersType>
@@ -17,7 +18,8 @@ export const getClustersRequest = async (): Promise<
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.clusters.GetClustersError"),
+      classNames: classes,
     });
     throw error;
   }
@@ -36,7 +38,8 @@ export const updateClusterNameRequest = async (
     notifications.show({
       color: "green",
       title: t("common.Success"),
-      message: t("common.SuccessRequest"),
+      message: t("notifications.clusters.UpdateClustersSuccessfull"),
+      classNames: classes,
     });
     return response;
   } catch (error) {
@@ -44,7 +47,8 @@ export const updateClusterNameRequest = async (
     notifications.show({
       color: "red",
       title: t("common.Error"),
-      message: t("common.ErrorRequest"),
+      message: t("notifications.clusters.UpdateClustersError"),
+      classNames: classes,
     });
     throw error;
   }
