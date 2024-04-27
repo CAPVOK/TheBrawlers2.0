@@ -148,3 +148,41 @@ export const addSolutionToTaskRequest = async (
     throw error;
   }
 };
+
+export const removeCaseFromTaskByTaskIDRequest = async (id: number): Promise<void> => {
+  try {
+    await taskApi.delete(`/task/${id}/case`);
+    notifications.show({
+      color: "green",
+      title: t("common.Success"),
+      message: t("common.SuccessRequest"),
+    });
+  } catch (error) {
+    console.error("Ошибка при удалении:", error);
+    notifications.show({
+      color: "red",
+      title: t("common.Error"),
+      message: t("common.ErrorRequest"),
+    });
+    throw error;
+  }
+};
+
+export const removeSolutionFromTaskByTaskIDRequest = async (id: number): Promise<void> => {
+  try {
+    await taskApi.delete(`/task/${id}/solution`);
+    notifications.show({
+      color: "green",
+      title: t("common.Success"),
+      message: t("common.SuccessRequest"),
+    });
+  } catch (error) {
+    console.error("Ошибка при удалении:", error);
+    notifications.show({
+      color: "red",
+      title: t("common.Error"),
+      message: t("common.ErrorRequest"),
+    });
+    throw error;
+  }
+};

@@ -5,9 +5,11 @@ import { useTasks } from "../../store/tasksSlice";
 import styles from "./styles.module.css";
 import { ITask, TaskStatusEnum } from "../../core/task/types";
 import {
+  removeCaseFromTaskByTaskID,
   addSolutionToTask,
   changeTaskStatusById,
   getTaskById,
+  removeSolutionFromTaskByTaskID,
 } from "../../core/task/layer";
 import { useTranslation } from "react-i18next";
 import { Textarea } from "@mantine/core";
@@ -68,6 +70,22 @@ function MainPageContent() {
     setSolution("");
   };
 
+  const handleCancelSolution = () => {
+    removeSolutionFromTaskByTaskID(activeTask).then(() => {
+      if (activeTask !== -1) {
+        getTask(activeTask);
+      }
+    });
+  };
+
+  const handleCancelCase = () => {
+    removeCaseFromTaskByTaskID(activeTask).then(() => {
+      if (activeTask !== -1) {
+        getTask(activeTask);
+      }
+    });
+  };
+
   const updateButtonProps: IButtonProps = {
     onClick: async () => {
       if (!taskData) return;
@@ -115,13 +133,27 @@ function MainPageContent() {
           <p>{taskData.description}</p>
           {taskData.case?.title && (
             <div className={styles["solution-block"]}>
-              <p className={styles.title}>{t("pages.selectedSolution")}:</p>
+              <div className={styles.solutionHead}>
+                <p className={styles.title}>{t("pages.selectedSolution")}</p>
+                <Button
+                  label={t("common.CancelSolution")}
+                  color="primary"
+                  onClick={handleCancelCase}
+                />
+              </div>
               <p className={styles.solution}>{taskData.case.title}</p>
             </div>
           )}
           {taskData.solution && (
             <div className={styles["solution-block"]}>
-              <p className={styles.title}>{t("pages.selectedSolution")}:</p>
+              <div className={styles.solutionHead}>
+                <p className={styles.title}>{t("pages.selectedSolution")}</p>
+                <Button
+                  label={t("common.CancelSolution")}
+                  color="primary"
+                  onClick={handleCancelSolution}
+                />
+              </div>
               <p className={styles.solution}>{taskData.solution}</p>
             </div>
           )}

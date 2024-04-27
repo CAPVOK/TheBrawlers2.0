@@ -7,6 +7,8 @@ import {
   changeTaskStatusRequest,
   getTaskByIdRequest,
   getTasksRequest,
+  removeCaseFromTaskByTaskIDRequest,
+  removeSolutionFromTaskByTaskIDRequest,
 } from "./requests";
 import {
   IAddSolutionToTask,
@@ -60,4 +62,12 @@ export const addNewTask = async (data: ICreateTask) => {
 export const addSolutionToTask = async (data: IAddSolutionToTask) => {
   const response = await addSolutionToTaskRequest(data);
   return response.data;
+};
+
+export const removeCaseFromTaskByTaskID = async (data: number) => {
+  await removeCaseFromTaskByTaskIDRequest(data);
+};
+
+export const removeSolutionFromTaskByTaskID = async (data: number) => {
+  await removeSolutionFromTaskByTaskIDRequest(data);
 };

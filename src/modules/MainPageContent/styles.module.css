@@ -26,6 +26,7 @@
   outline: 2px solid var(--clr-primary);
   border-radius: 0.5rem;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   row-gap: 0.5rem;
   column-gap: 1rem;
@@ -47,4 +48,10 @@
   background-color: var(--clr-surface-container-high);
   border-radius: var(--box-border);
   box-shadow: var(--box-shadow-2);
+}
+
+.solutionHead{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }

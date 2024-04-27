@@ -62,7 +62,8 @@
     "ConfirmThePassword": "Подтвердите пароль",
     "Heading": "Заголовок",
     "Add": "Добавить",
-    "Description": "Описание"
+    "Description": "Описание",
+    "CancelSolution": "Удалить решение"
   },
   "components": {
     "task": {
