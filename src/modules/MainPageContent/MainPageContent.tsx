@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, IButtonProps } from "../../components/UI";
 import { useCases } from "../../store/casesSlice";
 import { useTasks } from "../../store/tasksSlice";
@@ -15,9 +15,11 @@ import { useTranslation } from "react-i18next";
 import { Textarea } from "@mantine/core";
 function MainPageContent() {
   const [taskData, setTaskData] = useState<ITask>();
-  const [isPageLoading, setPageLoading] = useState(false);
+  const [isPageLoading, setPageLoading] = useState(true);
   const [isButtonsLoading, setButtonsLoading] = useState(false);
   const [solution, setSolution] = useState("");
+
+  const prevTask = useRef<number | null>(null);
 
   const { t } = useTranslation();
 
@@ -26,26 +28,33 @@ function MainPageContent() {
   const { closeCase } = useCases();
 
   const getTask = async (activeTask: number) => {
-    const timer = setTimeout(() => setPageLoading(true), 1200);
-    await getTaskById(activeTask).then((data) => {
-      setTaskData(data);
-    });
-    clearTimeout(timer);
-    setPageLoading(false);
+    getTaskById(activeTask)
+      .then((data) => {
+        setTaskData(data);
+      })
+      .finally(() => {
+        prevTask.current = activeTask;
+        setPageLoading(false);
+      });
   };
-
-  /* const getTask = async (activeTask: number) => {
-    setTaskData(undefined);
-    setPageLoading(true);
-    await getTaskById(activeTask).then((data) => {
-      setTaskData(data);
-    });
-    setPageLoading(false);
-  }; */
 
   useEffect(() => {
     if (activeTask !== -1) {
-      getTask(activeTask);
+      if (
+        !prevTask.current ||
+        prevTask.current === -1 ||
+        prevTask.current !== activeTask
+      ) {
+        const timer = setTimeout(() => {
+          setTaskData(undefined);
+          setPageLoading(true);
+        }, 1000);
+        getTask(activeTask).finally(() => {
+          clearTimeout(timer);
+        });
+      } else {
+        getTask(activeTask);
+      }
     }
   }, [activeTask, draftTasks, activeTasks]);
 
