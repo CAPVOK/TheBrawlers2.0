@@ -19,7 +19,7 @@
   text-overflow: ellipsis;
 }
 
-.status {
+.info {
   font-size: small;
   font-weight: 400;
 }
@@ -35,7 +35,7 @@
 
 .task.user {
   padding-left: 2rem;
-  outline: 2px solid var(--clr-tertiary);
+  outline: 2px solid var(--clr-primary);
 }
 
 .task.user::before {
@@ -45,11 +45,15 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: var(--clr-tertiary);
+  background-color: var(--clr-primary);
 }
 
 @media (hover: hover) {
   .task:hover {
     box-shadow: var(--box-shadow-2);
   }
+}
+
+p span {
+  font-weight: 700;
 }

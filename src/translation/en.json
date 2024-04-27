@@ -44,6 +44,7 @@
     "Details": "Details",
     "Actions": "Actions",
     "NoResults": "No Results",
+    "Data": "Дата",
     "NoData": "No Data",
     "Login": "Login",
     "Register": "Register",
@@ -63,7 +64,8 @@
     "Heading": "Heading",
     "Add": "Add",
     "Description": "Description",
-    "CancelSolution": "Delete solution"
+    "CancelSolution": "Delete solution",
+    "Status": "Status"
   },
   "components": {
     "task": {
@@ -87,7 +89,8 @@
         "solved": "Solved",
         "unsolved": "Unsolved"
       },
-      "clusters": "Popular issues"
+      "clusters": "Popular issues",
+      "typeCluster": "Type of problem"
     }
   },
   "pages": {

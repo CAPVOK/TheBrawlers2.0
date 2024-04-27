@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import { useCases } from "../../store/casesSlice";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../store/authSlice";
-import {  getActiveTasks, getDraftTasks } from "../../core/task/layer";
+import { getActiveTasks, getDraftTasks } from "../../core/task/layer";
 import { TaskStatusEnum } from "../../core/task/types";
 
 function Sidebar() {
@@ -67,6 +67,20 @@ function Sidebar() {
     closeCase();
   };
 
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZone: "UTC",
+    };
+    return date.toLocaleString("ru-RU", options);
+  }
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.header}>
@@ -89,6 +103,9 @@ function Sidebar() {
               <TaskItem
                 key={task.id}
                 title={task.title}
+                id={task.id}
+                cluster={task.cluster.name}
+                data={formatDate(task.created_at)}
                 clickHandler={() => hadleTaskClick(task.id)}
                 isActive={activeTask === task.id}
                 statusTitle={getStatus(task.status)}

@@ -44,6 +44,7 @@
     "Details": "Детали",
     "Actions": "Действия",
     "NoResults": "Нет результатов",
+    "Data": "Дата",
     "NoData": "Нет данных",
     "Login": "Войти",
     "Register": "Зарегистрироваться",
@@ -63,7 +64,8 @@
     "Heading": "Заголовок",
     "Add": "Добавить",
     "Description": "Описание",
-    "CancelSolution": "Удалить решение"
+    "CancelSolution": "Удалить решение",
+    "Status": "Статус"
   },
   "components": {
     "task": {
@@ -87,7 +89,8 @@
         "solved": "Есть решение",
         "unsolved": "Без решения"
       },
-      "clusters": "Популярные проблемы"
+      "clusters": "Популярные проблемы",
+      "typeCluster": "Тип проблемы"
     }
   },
   "pages": {
