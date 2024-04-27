@@ -25,12 +25,3 @@
   padding: 1rem;
   gap: 1rem;
 }
-
-.nodata {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  border-left: 1px solid var(--clr-outline);
-  background-color: var(--clr-surface-container);
-}
