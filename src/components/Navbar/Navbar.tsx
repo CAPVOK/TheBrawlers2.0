@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.leftSection}>
-        <p className={styles.title}>The Brawlers2.0</p>
+        <p className={styles.title}>The Brawlers 2.0</p>
         <Link to={RoutesEnum.Home}>
           <p
             className={clsx(styles["navbar-link"], {
