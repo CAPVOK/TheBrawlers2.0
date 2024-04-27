@@ -3,10 +3,10 @@
     --notification-color,
     var(--mantine-primary-color-filled)
   );
+}
 
-  &::before {
-    background-color: var(--mantine-color-white);
-  }
+.root::before {
+  background-color: var(--mantine-color-white);
 }
 
 .description,
@@ -16,8 +16,9 @@
 
 .closeButton {
   color: var(--mantine-color-white);
+}
 
-  @mixin hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+.closeButton:hover {
+  background-color: var(--mantine-color-white);
+  color: black;
 }
