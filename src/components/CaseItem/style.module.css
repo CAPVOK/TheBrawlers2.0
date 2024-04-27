@@ -2,8 +2,8 @@
   position: relative;
   padding: 20px;
   cursor: pointer;
-  color: var(--clr-on-tertiary-container);
-  background-color: var(--clr-tertiary-container);
+  color: var(--clr-on-secondary-container);
+  background-color: var(--clr-secondary-container);
   border-radius: var(--box-border);
   overflow: hidden;
   transition: 0.1s;
@@ -32,7 +32,7 @@
 }
 
 .case:focus-visible {
-  outline: 2px solid var(--clr-tertiary);
+  outline: 2px solid var(--clr-secondary);
 }
 
 @media (hover: hover) {

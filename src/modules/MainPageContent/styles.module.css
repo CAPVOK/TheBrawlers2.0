@@ -1,12 +1,13 @@
 .main {
   padding: 1rem;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .nodata {
@@ -16,20 +17,108 @@
   font-size: 2rem;
 }
 
+.scroll-content {
+  height: 100%;
+}
+
 .content {
   display: grid;
   gap: 1rem;
 }
 
-.solution-block {
-  padding: 0.5rem;
-  outline: 2px solid var(--clr-primary);
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  row-gap: 0.5rem;
+.attributes {
+  & .title {
+    font-size: 2rem;
+  }
+  & .description {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+.properties {
+  padding-block: 1rem;
+  display: grid;
+  grid-template-columns: min-content auto;
+  row-gap: 1.2rem;
+  column-gap: 2rem;
+  align-items: center;
+  & > div {
+    display: contents;
+  }
+
+  & label {
+    font-weight: 500;
+    color: var(--clr-outline);
+  }
+
+  & p {
+    font-weight: 500;
+  }
+
+  .pill {
+    position: relative;
+    width: fit-content;
+
+    & > p {
+      position: absolute;
+      inset: 0;
+    }
+  }
+  .pill::before {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 1rem);
+    height: calc(100% + 0.5rem);
+    border-radius: 1rem;
+    opacity: 90%;
+  }
+  .pill.normal::before {
+    background-color: var(--clr-secondary-container);
+  }
+  .pill.progress::before {
+    background-color: var(--clr-tertiary-container);
+  }
+  .pill.completed::before {
+    background-color: var(--clr-success-container);
+  }
+  .pill.normal > p {
+    color: var(--clr-on-secondary-container);
+  }
+  .pill.progress > p {
+    color: var(--clr-on-tertiary-container);
+  }
+  .pill.completed > p {
+    color: var(--clr-on-success-container);
+  }
+}
+
+.block {
+  border-radius: var(--box-border);
+  padding: 0.6rem;
+  background-color: var(--clr-surface-container-high);
+}
+
+.selected-solution {
+  display: grid;
+  grid-template-columns: auto min-content;
   column-gap: 1rem;
+  align-items: center;
+
+  & p:first-child {
+    font-weight: 400;
+  }
+  & p:last-child {
+    color: var(--clr-secondary);
+    font-weight: 600;
+  }
+}
+
+.solution-block {
+  background-color: var(--clr-surface-container-high);
 }
 
 .solution-block .title {
@@ -48,10 +137,4 @@
   background-color: var(--clr-surface-container-high);
   border-radius: var(--box-border);
   box-shadow: var(--box-shadow-2);
-}
-
-.solutionHead{
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
 }

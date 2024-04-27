@@ -42,7 +42,7 @@ const CaseItem: FC<ICaseItemProps> = (props) => {
       <div className={styles.content}>
         <p className={styles.text}>{text}</p>
         <Button
-          color="tertiary"
+          color="secondary"
           label="Использовать"
           fullWidth
           tabIndex={isActive ? 0 : -1}

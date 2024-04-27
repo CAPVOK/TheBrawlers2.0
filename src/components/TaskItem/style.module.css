@@ -35,7 +35,7 @@
 
 .task.user {
   padding-left: 2rem;
-  outline: 2px solid var(--clr-primary);
+  outline: 2px solid var(--clr-secondary);
 }
 
 .task.user::before {
@@ -45,7 +45,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: var(--clr-primary);
+  background-color: var(--clr-secondary);
 }
 
 @media (hover: hover) {
