@@ -100,6 +100,9 @@ function MainPageContent() {
     return <div className={styles.nodata}>{t("pages.noTasks")}</div>;
   }
 
+  const isTaskTaked =
+    !!taskData && taskData.status === TaskStatusEnum.InProgress;
+
   return (
     <div className={styles.main}>
       <div className={styles.nav}>
@@ -122,24 +125,26 @@ function MainPageContent() {
               <p className={styles.solution}>{taskData.solution}</p>
             </div>
           )}
-          <div className={styles.sendForm}>
-            <Textarea
-              label={t("components.case.Solution")}
-              withAsterisk
-              placeholder={t("components.case.AddSolutionText")}
-              value={solution}
-              onChange={(e) => setSolution(e.target.value)}
-              autosize
-              minRows={3}
-              maxRows={6}
-            />
-            <Button
-              label={t("components.case.AddCase")}
-              color="success"
-              fullWidth
-              onClick={handleAddSolution}
-            />
-          </div>
+          {isTaskTaked && (
+            <div className={styles.sendForm}>
+              <Textarea
+                label={t("components.case.Solution")}
+                withAsterisk
+                placeholder={t("components.case.AddSolutionText")}
+                value={solution}
+                onChange={(e) => setSolution(e.target.value)}
+                autosize
+                minRows={3}
+                maxRows={6}
+              />
+              <Button
+                label={t("components.case.AddCase")}
+                color="success"
+                fullWidth
+                onClick={handleAddSolution}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <p className={styles.nodata}>{t("common.Loading")}</p>

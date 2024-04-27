@@ -91,6 +91,7 @@
   },
   "pages": {
     "noTasks": "No tasks selected",
+    "noCases": "There are no ready-made solutions",
     "noClusters": "No problems selected",
     "takeTask": "Get task",
     "Complete": "Complete",

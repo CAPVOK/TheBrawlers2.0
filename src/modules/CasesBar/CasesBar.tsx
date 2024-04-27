@@ -75,6 +75,10 @@ function CasesBar() {
     }
   };
 
+  if (activeTask === -1 || !cases) {
+    return <div className={styles.nodata}>{t("pages.noCases")}</div>;
+  }
+
   return (
     <div className={styles.sidebar}>
       <h2 className={styles.title}>{t("components.case.Solutions")}</h2>
