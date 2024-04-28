@@ -22,8 +22,8 @@
   width: 100%;
   box-sizing: border-box;
   display: grid;
-  padding: 1rem;
-  gap: 1rem;
+  padding: 8px;
+  gap: 4px;
 }
 
 .header {

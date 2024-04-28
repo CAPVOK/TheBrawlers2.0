@@ -1,12 +1,13 @@
 import { FC } from "react";
 import { clsx } from "clsx";
 import styles from "./style.module.css";
-import { useTranslation } from "react-i18next";
+import { TaskStatusEnum } from "../../core/task/types";
 
 interface ITaskItemProps {
   clickHandler: () => void;
   id: number;
   cluster: string;
+  status: TaskStatusEnum;
   title: string;
   isActive: boolean;
   statusTitle: string;
@@ -21,39 +22,38 @@ const TaskItem: FC<ITaskItemProps> = (props) => {
     title,
     isActive,
     statusTitle,
+    status,
     data,
     isUser,
     id,
     cluster,
     fire,
   } = props;
-  const { t } = useTranslation();
 
   return (
     <div
       className={clsx(styles.task, {
         [styles.active]: isActive,
         [styles.user]: isUser,
-        [styles.fire]: !isUser && fire, // Добавляем класс fire только если isUser равен false
+        [styles.fire]: !isUser && fire,
       })}
       onClick={clickHandler}
       tabIndex={0}
     >
       <p className={styles.text}>
-        <span>
-          {title} #{id}
-        </span>
+        {title} #{id}
       </p>
-      <p className={styles.info}>
-        <span>{t("common.Status")}: </span>
+      <p
+        className={clsx(styles.pill, {
+          [styles.normal]: status === TaskStatusEnum.Draft,
+          [styles.progress]: status === TaskStatusEnum.InProgress,
+          [styles.completed]: status === TaskStatusEnum.Completed,
+        })}
+      >
         {statusTitle}
       </p>
-      <p className={styles.info}>
-        <span>{t("components.cluster.typeCluster")}:</span> {cluster}
-      </p>
-      <p className={styles.info}>
-        <span>{t("common.Data")}:</span> {data}
-      </p>
+      <p className={styles.commontext}>{data}</p>
+      <p className={styles.commontext}>{cluster}</p>
     </div>
   );
 };

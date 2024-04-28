@@ -102,6 +102,7 @@ function Sidebar() {
             tasks.map((task) => (
               <TaskItem
                 key={task.id}
+                status={task.status}
                 title={task.title}
                 id={task.id}
                 fire={task.fire}
