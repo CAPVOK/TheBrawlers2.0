@@ -1,16 +1,18 @@
 import { AxiosResponse } from "axios";
-import { IUserMark } from "./types";
 import { userApi } from "./api";
 import { notifications } from "@mantine/notifications";
 import { t } from "i18next";
 import classes from "../notifications.module.css";
 import { ITask, TaskStatusEnum } from "../task/types";
+import { GetAdminUsersType } from "../../store/adminSlice";
 
 export const getUsersRequest = async (): Promise<
-  AxiosResponse<IUserMark[]>
+  AxiosResponse<GetAdminUsersType>
 > => {
   try {
-    const response: AxiosResponse<IUserMark[]> = await userApi.get(`/user/`);
+    const response: AxiosResponse<GetAdminUsersType> = await userApi.get(
+      `/user/`
+    );
     return response;
   } catch (error) {
     console.error("Error getting users", error);

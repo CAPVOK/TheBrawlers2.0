@@ -5,75 +5,36 @@ import { getUsers, tasksByUserId } from "../../core/user/layer";
 import UserItem from "../../components/UserItem/UserItem";
 import { Button } from "@mantine/core";
 import { ITask } from "../../core/task/types";
+import { useAdminUsers } from "../../store/adminSlice";
 
 function Userbar() {
   const { t } = useTranslation();
-
-  const [users, setUsers] = useState<IUser[]>([]);
-  const [isUser, setIsUser] = useState(false);
-  const [tasks, setTasks] = useState<ITask[]>([]);
+  const { activeAdminUser, adminUsers, changeActiveAdminUser, closeAdminUser } =
+    useAdminUsers();
 
   useEffect(() => {
-    getUsers().then((data) => {
-      setUsers(data);
-    });
+    getUsers();
   }, []);
 
-  const handleUserClick = () => {
-    setIsUser(!isUser);
+  const handleUserClick = (id: number) => {
+    changeActiveAdminUser(id);
+    closeAdminUser();
   };
 
   return (
     <div className={styles.sidebar}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>{t("common.Users")}</h2>
-      </div>
+      <h2 className={styles.title}>{t("common.Users")}</h2>
       <div className={styles["scroll-block"]}>
         <div className={styles.content}>
-          {users ? (
-            <>
-              {users.map((user) => (
-                <>
-                  <UserItem
-                    key={user.id}
-                    clickHandler={() => {
-                      handleUserClick();
-                    }}
-                    email={user.email}
-                    isActive={user.isActive}
-                    avgDuration={user.avgDuration}
-                    id={0}
-                  />
-                  {isUser ? (
-                    <>
-                      <Button
-                        onClick={() =>
-                          tasksByUserId(user.userId, 1).then((data) =>
-                            setTasks(data)
-                          )
-                        }
-                      >
-                        Status1
-                      </Button>
-                      <Button
-                        onClick={() =>
-                          tasksByUserId(user.userId, 2).then((data) =>
-                            setTasks(data)
-                          )
-                        }
-                      >
-                        Status2
-                      </Button>
-                    </>
-                  ) : (
-                    <></>
-                  )}
-                </>
-              ))}
-            </>
-          ) : (
-            <>no data</>
-          )}
+          {adminUsers.map((item) => (
+            <UserItem
+              key={item.id}
+              email={item.email}
+              clickHandler={() => handleUserClick(item.id)}
+              isActive={activeAdminUser === item.id}
+              avgDuration={item.avarage_duration}
+            />
+          ))}
         </div>
       </div>
     </div>

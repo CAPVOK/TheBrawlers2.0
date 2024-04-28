@@ -4,7 +4,7 @@ import styles from "./style.module.css";
 
 interface IUserItemProps {
   clickHandler: () => void;
-  id: number;
+  // id: number;
   email: string;
   isActive: boolean;
   kpd?: number;
