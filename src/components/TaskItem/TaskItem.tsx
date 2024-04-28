@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 import styles from "./style.module.css";
 import { TaskStatusEnum } from "../../core/task/types";
 
-interface ITaskItemProps {
+export interface ITaskItemProps {
   clickHandler: () => void;
   id: number;
   cluster: string;
