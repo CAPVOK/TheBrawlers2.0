@@ -112,21 +112,21 @@ export const addNewTaskRequest = async (
       title: data.title,
       description: data.description,
     });
-    notifications.show({
+   /*  notifications.show({
       color: "green",
       title: t("common.Success"),
       message: t("notifications.tasks.newTaskSuccessfull"),
       classNames: classes,
-    });
+    }); */
     return response;
   } catch (error) {
     console.log("Ошибка при добавлении задачи:", error);
-    notifications.show({
+   /*  notifications.show({
       color: "red",
       title: t("common.Error"),
       message: t("notifications.tasks.newTaskError"),
       classNames: classes,
-    });
+    }); */
     throw error;
   }
 };
