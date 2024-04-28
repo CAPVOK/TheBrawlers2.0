@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { FC } from "react";
 import { Userbar } from "../../modules/UserBar/Userbar";
 import { useAdminUsers } from "../../store/adminSlice";
-import { AdminContent } from "../../modules/AdminContetnt/OverflowContent";
+import { AdminContent } from "../../modules/AdminContetnt/AdminContent";
 
 export const AdminPage: FC = () => {
   const { activeAdminUser } = useAdminUsers();

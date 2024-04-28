@@ -32,7 +32,7 @@ export const tasksByUserIdRequest = async (
 ): Promise<AxiosResponse<ITask[]>> => {
   try {
     const response: AxiosResponse<ITask[]> = await userApi.get(
-      `/user/${id}/tasks/?status=${status}`
+      `/user/${id}/task?status=${status}`
     );
     // notifications.show({
     //     color: "green",

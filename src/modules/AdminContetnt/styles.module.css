@@ -60,6 +60,8 @@ h1.title {
 .clusterTitle {
   display: flex;
   flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
 }
 
 .nodata {
