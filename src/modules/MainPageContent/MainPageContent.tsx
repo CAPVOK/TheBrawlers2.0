@@ -18,6 +18,7 @@ import { IconTrash, IconX, IconPencil } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { RoutesEnum } from "../../app/routes";
 import { useClusters } from "../../store/clasterSlice";
+import { BrandCubes } from "../../components/BrandCubes/BrandCubes";
 
 function MainPageContent() {
   const [taskData, setTaskData] = useState<ITask>();
@@ -75,6 +76,7 @@ function MainPageContent() {
   }, [isEditContent]);
 
   const handleAddSolution = () => {
+    if (!solution.trim()) return;
     addSolutionToTask({
       id: activeTask,
       solution: solution,
@@ -87,6 +89,7 @@ function MainPageContent() {
   };
 
   const handleCancelSolution = () => {
+    setSolution("");
     removeSolutionFromTaskByTaskID(activeTask).then(() => {
       if (activeTask !== -1) {
         getTask(activeTask);
@@ -152,7 +155,13 @@ function MainPageContent() {
     (!isSolution || isEditContent);
 
   if (activeTask === -1) {
-    return <div className={styles.nodata}>{t("pages.noTasks")}</div>;
+    return (
+      <div className={styles.nodata}>
+        <div>
+          <BrandCubes />
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -160,7 +169,7 @@ function MainPageContent() {
       <div className={styles["scroll-content"]}>
         <div className={styles.nav}>
           <Button
-            color={isTaskDraft ? "cyan" : "green"}
+            color={isTaskDraft ? "var(--clr-primary)" : "var(--clr-success)"}
             disabled={isUpdateButtonDisabled}
             onClick={updateButtonClick}
           >
@@ -250,6 +259,7 @@ function MainPageContent() {
                         variant="subtle"
                         leftSection={<IconPencil />}
                         onClick={() => setEditContent(!isEditContent)}
+                        color="var(--clr-primary)"
                       >
                         {isEditContent ? t("common.Cancel") : t("common.Edit")}
                       </Button>
@@ -286,9 +296,15 @@ function MainPageContent() {
                       onChange={(e) => setSolution(e.target.value)}
                       autosize
                       minRows={3}
-                      maxRows={6}
+                      maxRows={20}
                     />
-                    <Button onClick={handleAddSolution}>
+                    <Button
+                      style={{
+                        borderRadius: "1.5rem",
+                      }}
+                      onClick={handleAddSolution}
+                      color="var(--clr-primary)"
+                    >
                       {t("components.case.AddCase")}
                     </Button>
                   </div>

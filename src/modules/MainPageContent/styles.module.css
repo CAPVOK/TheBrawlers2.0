@@ -2,6 +2,7 @@
   padding: 1rem;
   height: 100%;
   overflow-y: scroll;
+  transition: 0.3s;
 }
 
 .nav {
@@ -11,10 +12,14 @@
 }
 
 .nodata {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
+  position: relative;
+  animation: shimmer 1s forwards;
+}
+
+.nodata > div {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .scroll-content {
@@ -24,6 +29,7 @@
 .content {
   display: grid;
   gap: 1rem;
+  padding-bottom: 50px;
 }
 
 .attributes {
@@ -109,7 +115,7 @@
   align-items: center;
 
   & p:first-child {
-    font-weight: 400;
+    font-weight: 500;
   }
   & p:last-child {
     color: var(--clr-secondary);
@@ -134,7 +140,7 @@
 }
 
 .solution-block .title {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .solution-block .solution {
@@ -147,4 +153,16 @@
   padding: 1rem;
   background-color: var(--clr-surface-container-high);
   border-radius: var(--box-border);
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
