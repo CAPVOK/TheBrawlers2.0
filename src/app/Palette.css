@@ -1,9 +1,9 @@
 :root,
 :root[data-theme="light"] {
-  --clr-surface: #f8f9ff;
-  --clr-surface-container: #ebeef6;
-  --clr-surface-container-high: #e5e8f0;
-  --clr-surface-container-highest: #dfe2eb;
+  --clr-surface: #FFFFFF;
+  --clr-surface-container: #FFFFFF;
+  --clr-surface-container-high: #f5f3f0;
+  --clr-surface-container-highest: #ebe9e6;
   --clr-surface-container-low: #f1f3fc;
   --clr-surface-container-lowest: #ffffff;
   --clr-surface-dim: #d7dae2;
@@ -14,15 +14,15 @@
   --clr-outline: #707884;
   --clr-outline-variant: #c0c7d4;
   /*  */
-  --clr-primary: #0061a6;
+  --clr-primary: #04A9FF;
   --clr-on-primary: #ffffff;
-  --clr-primary-container: #5baaff;
+  --clr-primary-container: #E5F5FE;
   --clr-on-primary-container: #001c37;
   /*  */
-  --clr-secondary: #a10241;
+  --clr-secondary: #FF3F53;
   --clr-on-secondary: #ffffff;
-  --clr-secondary-container: #d43664;
-  --clr-on-secondary-container: #ffffff;
+  --clr-secondary-container: #FFE8E5;
+  --clr-on-secondary-container: black;
   /*  */
   --clr-tertiary: #6c5e00;
   --clr-on-tertiary: #ffffff;
@@ -34,9 +34,9 @@
   --clr-error-container: #ffdad6;
   --clr-on-error-container: #410002;
   /*  */
-  --clr-success: #276c00;
+  --clr-success: #00E066;
   --clr-on-success: #ffffff;
-  --clr-success-container: #92e56a;
+  --clr-success-container: #DAF8E0;
   --clr-on-success-container: #174600;
 
   --clr-fire-1: #f6d36b;

@@ -42,6 +42,11 @@ const CaseItem: FC<ICaseItemProps> = (props) => {
       <div className={styles.content}>
         <p className={styles.text}>{text}</p>
         <Button
+          style={{
+            borderRadius: "1.5rem",
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+          }}
           color="secondary"
           label="Использовать"
           fullWidth
