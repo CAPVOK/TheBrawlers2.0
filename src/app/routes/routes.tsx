@@ -5,6 +5,7 @@ import {
   OverflowPage,
   RegisterPage,
 } from "../../pages";
+import AdminPage from "../../pages/AdminPage/AdminPage";
 import { NewTaskPage } from "../../pages/NewTaskPage/NewTaskPage";
 import { IAppRoute } from "./types";
 
@@ -17,6 +18,7 @@ export enum RoutesEnum {
   Login = "/login",
   Stack = "/stack_overflow",
   NewTask = "/new-task",
+  Admin = "/admin",
 }
 
 /**
@@ -46,6 +48,11 @@ export const routes: IAppRoute[] = [
     isPrivate: false,
     path: RoutesEnum.NewTask,
     element: <NewTaskPage />,
+  },
+  {
+    isPrivate: false,
+    path: RoutesEnum.Admin,
+    element: <AdminPage />,
   },
   {
     path: RoutesEnum.Login,

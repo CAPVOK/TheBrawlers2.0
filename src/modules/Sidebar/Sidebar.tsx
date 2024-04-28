@@ -69,6 +69,9 @@ function Sidebar() {
 
   function formatDate(dateString: string): string {
     const date = new Date(dateString);
+    
+    date.setHours(date.getHours() + 3);
+
     const options: Intl.DateTimeFormatOptions = {
       year: "numeric",
       month: "2-digit",
@@ -78,6 +81,7 @@ function Sidebar() {
       second: "2-digit",
       timeZone: "UTC",
     };
+
     return date.toLocaleString("ru-RU", options);
   }
 
