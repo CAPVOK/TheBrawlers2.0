@@ -1,13 +1,16 @@
 import { AxiosResponse } from "axios";
-import { IUser } from "./types";
+import { IUserMark } from "./types";
 import { userApi } from "./api";
 import { notifications } from "@mantine/notifications";
 import { t } from "i18next";
 import classes from "../notifications.module.css";
+import { ITask, TaskStatusEnum } from "../task/types";
 
-export const getUsersRequest = async (): Promise<AxiosResponse<IUser>> => {
+export const getUsersRequest = async (): Promise<
+  AxiosResponse<IUserMark[]>
+> => {
   try {
-    const response: AxiosResponse<IUser> = await userApi.get(`/users/`);
+    const response: AxiosResponse<IUserMark[]> = await userApi.get(`/user/`);
     return response;
   } catch (error) {
     console.error("Error getting users", error);
@@ -22,11 +25,12 @@ export const getUsersRequest = async (): Promise<AxiosResponse<IUser>> => {
 };
 
 export const tasksByUserIdRequest = async (
-  userData: IUser
-): Promise<AxiosResponse<IUser>> => {
+  id: number,
+  status: TaskStatusEnum
+): Promise<AxiosResponse<ITask[]>> => {
   try {
-    const response: AxiosResponse<IUser> = await userApi.get(
-      `/users/${userData.userId}/`
+    const response: AxiosResponse<ITask[]> = await userApi.get(
+      `/user/${id}/tasks/?status=${status}`
     );
     // notifications.show({
     //     color: "green",

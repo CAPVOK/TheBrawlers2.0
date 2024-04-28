@@ -65,7 +65,8 @@
     "Add": "Добавить",
     "Description": "Описание",
     "CancelSolution": "Удалить решение",
-    "Status": "Статус"
+    "Status": "Статус",
+    "Users":"Пользователи"
   },
   "components": {
     "task": {

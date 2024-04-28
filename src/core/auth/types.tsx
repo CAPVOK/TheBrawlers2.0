@@ -17,6 +17,7 @@ export interface IUserRegisterResponse {
 }
 
 export interface IUser {
+  userId: Key | null | undefined;
   id: number;
   email: string;
 }

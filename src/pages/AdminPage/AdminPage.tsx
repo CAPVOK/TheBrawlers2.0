@@ -1,5 +1,11 @@
+import { Userbar } from "../../modules/UserBar/Userbar";
+
 const AdminPage = () => {
-  return <div>AdminPage</div>;
+  return (
+    <div>
+      <Userbar />
+    </div>
+  );
 };
 
 export default AdminPage;

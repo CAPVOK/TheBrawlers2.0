@@ -141,12 +141,6 @@ export const addSolutionToTaskRequest = async (
         solution: data.solution,
       }
     );
-    notifications.show({
-      color: "green",
-      title: t("common.Success"),
-      message: t("notifications.tasks.addSolutionSuccessfull"),
-      classNames: classes,
-    });
     return response;
   } catch (error) {
     console.error("Ошибка создания решения:", error);
