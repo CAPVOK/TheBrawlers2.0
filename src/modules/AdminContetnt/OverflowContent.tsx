@@ -46,39 +46,10 @@ function AdminContent() {
 
   return (
     <div className={styles.overflow}>
-      {activeCluster ? (
+      {activeAdminUser ? (
         <div className={styles.content}>
           <div className={styles.nav}>
-            <div className={styles.clusterTitle}>
-              {isEditing ? (
-                <>
-                  <input
-                    type="text"
-                    value={editedTitle}
-                    onChange={handleInputChange}
-                  />
-                  <IconCheck
-                    stroke={2}
-                    onClick={handleSaveChanges}
-                    style={{ cursor: "pointer" }}
-                  />
-                  <IconX
-                    stroke={2}
-                    onClick={handleCancelChanges}
-                    style={{ cursor: "pointer" }}
-                  />
-                </>
-              ) : (
-                <>
-                  <h1>{editedTitle}</h1>
-                  <IconPencil
-                    stroke={2}
-                    onClick={handleEditIconClick}
-                    style={{ cursor: "pointer" }}
-                  />
-                </>
-              )}
-            </div>
+            <div className={styles.clusterTitle}></div>
             <Button {...closeButtonProps} />
           </div>
           <div className={styles.sendForm}>
@@ -117,48 +88,7 @@ function AdminContent() {
                     {item.title} #{item.id}
                   </h1>
                   <div className={styles.buttonGroup}>
-                    <IconPencil
-                      stroke={2}
-                      onClick={open}
-                      style={{ cursor: "pointer" }}
-                    />
-                    <IconTrash
-                      stroke={2}
-                      onClick={() => handleDeleteCase(item.id)}
-                      style={{ cursor: "pointer" }}
-                    />
-                    <Modal
-                      opened={opened}
-                      onClose={close}
-                      title={t("common.Edit")}
-                      centered
-                    >
-                      <TextInput
-                        label={t("common.Heading")}
-                        withAsterisk
-                        placeholder={t("common.AddText")}
-                        value={headingEditing}
-                        onChange={(e) => setHeadingEditing(e.target.value)}
-                      />
-                      <Textarea
-                        label={t("components.case.Solution")}
-                        withAsterisk
-                        placeholder={t("components.case.AddSolutionText")}
-                        value={solutionEditing}
-                        onChange={(e) => setSolutionEditing(e.target.value)}
-                        autosize
-                        minRows={3}
-                        maxRows={6}
-                      />
-                      <div className={styles.margins}>
-                        <Button
-                          label={t("components.case.AddCase")}
-                          color="success"
-                          fullWidth
-                          onClick={() => handleEditCase(item.id)}
-                        />
-                      </div>
-                    </Modal>
+                    
                   </div>
                 </div>
                 <p>{item.solution}</p>
