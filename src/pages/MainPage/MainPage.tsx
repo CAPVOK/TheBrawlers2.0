@@ -12,9 +12,10 @@ const MainPage = () => {
 
   useEffect(() => {
     const resizableBlock = document.getElementById("resizableBlock");
+    const resizableSlider = document.getElementById("resizableSlider");
     let isResizing = false;
     let prevX = 0;
-    if (!resizableBlock) return;
+    if (!resizableBlock || !resizableSlider) return;
 
     const handleMouseMove = (event: MouseEvent) => {
       if (isResizing) {
@@ -37,10 +38,10 @@ const MainPage = () => {
       document.removeEventListener("mouseup", handleMouseUp);
     };
 
-    resizableBlock.addEventListener("mousedown", handleMouseDown);
+    resizableSlider.addEventListener("mousedown", handleMouseDown);
 
     return () => {
-      resizableBlock.removeEventListener("mousedown", handleMouseDown);
+      resizableSlider.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
@@ -53,6 +54,7 @@ const MainPage = () => {
         <Sidebar />
         <MainPageContent />
         <div className={styles.resizableBlock} id="resizableBlock">
+          <div className={styles.slider} id="resizableSlider" />
           <CasesBar />
         </div>
       </div>
