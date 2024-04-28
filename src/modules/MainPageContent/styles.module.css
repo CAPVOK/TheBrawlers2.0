@@ -117,12 +117,24 @@
   }
 }
 
+.solution-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.solution-body {
+  display: grid;
+  row-gap: 0.5rem;
+}
+
 .solution-block {
-  background-color: var(--clr-surface-container-high);
+  display: grid;
+  row-gap: 1rem;
 }
 
 .solution-block .title {
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .solution-block .solution {
@@ -130,11 +142,9 @@
 }
 
 .sendForm {
-  width: 100%;
   display: grid;
   gap: 1rem;
   padding: 1rem;
   background-color: var(--clr-surface-container-high);
   border-radius: var(--box-border);
-  box-shadow: var(--box-shadow-2);
 }
