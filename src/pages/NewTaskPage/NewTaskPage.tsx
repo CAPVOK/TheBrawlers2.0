@@ -15,6 +15,11 @@ export const NewTaskPage = () => {
     addNewTask({
       title: title,
       description: description,
+    }).catch(() => {
+      addNewTask({
+        title: title,
+        description: description,
+      });
     });
     notifications.show({
       color: "green",
