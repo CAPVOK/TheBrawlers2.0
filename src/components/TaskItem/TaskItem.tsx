@@ -12,6 +12,7 @@ interface ITaskItemProps {
   statusTitle: string;
   isUser: boolean;
   data: string;
+  fire: boolean;
 }
 
 const TaskItem: FC<ITaskItemProps> = (props) => {
@@ -24,6 +25,7 @@ const TaskItem: FC<ITaskItemProps> = (props) => {
     isUser,
     id,
     cluster,
+    fire,
   } = props;
   const { t } = useTranslation();
 
@@ -32,6 +34,7 @@ const TaskItem: FC<ITaskItemProps> = (props) => {
       className={clsx(styles.task, {
         [styles.active]: isActive,
         [styles.user]: isUser,
+        [styles.fire]: !isUser && fire, // Добавляем класс fire только если isUser равен false
       })}
       onClick={clickHandler}
       tabIndex={0}

@@ -104,6 +104,7 @@ function Sidebar() {
                 key={task.id}
                 title={task.title}
                 id={task.id}
+                fire={task.fire}
                 cluster={task.cluster.name}
                 data={formatDate(task.created_at)}
                 clickHandler={() => hadleTaskClick(task.id)}

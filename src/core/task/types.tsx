@@ -14,6 +14,7 @@ export interface ITask {
   case?: ICase;
   cluster: ICluster;
   user: IUser;
+  fire: boolean;
 }
 
 export enum TaskStatusEnum {
