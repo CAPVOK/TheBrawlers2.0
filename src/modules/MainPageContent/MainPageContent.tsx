@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { Button as UIButton } from "../../components/UI";
 import { useCases } from "../../store/casesSlice";
 import { useTasks } from "../../store/tasksSlice";
 import { clsx } from "clsx";
 import styles from "./styles.module.css";
 import { ITask, TaskStatusEnum } from "../../core/task/types";
-import { Button } from "@mantine/core";
+import { Button, UnstyledButton } from "@mantine/core";
 import {
   removeCaseFromTaskByTaskID,
   addSolutionToTask,
@@ -15,9 +14,11 @@ import {
 } from "../../core/task/layer";
 import { useTranslation } from "react-i18next";
 import { Textarea, ActionIcon } from "@mantine/core";
-import { IconTrash, IconX } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
+import { IconTrash, IconX, IconPencil } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom";
 import { RoutesEnum } from "../../app/routes";
+import { useClusters } from "../../store/clasterSlice";
+
 function MainPageContent() {
   const [taskData, setTaskData] = useState<ITask>();
   const [isPageLoading, setPageLoading] = useState(true);
@@ -28,10 +29,12 @@ function MainPageContent() {
   const prevTask = useRef<number | null>(null);
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const { activeTask, closeTask, changeActiveTask, draftTasks, activeTasks } =
     useTasks();
   const { closeCase } = useCases();
+  const { changeActiveCluster } = useClusters();
 
   const getTask = async (activeTask: number) => {
     getTaskById(activeTask)
@@ -64,6 +67,13 @@ function MainPageContent() {
     }
   }, [activeTask, draftTasks, activeTasks]);
 
+  useEffect(() => {
+    if (isEditContent) {
+      setSolution(taskData?.solution || "");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isEditContent]);
+
   const handleAddSolution = () => {
     addSolutionToTask({
       id: activeTask,
@@ -73,7 +83,7 @@ function MainPageContent() {
         getTask(activeTask);
       }
     });
-    setSolution("");
+    setEditContent(false);
   };
 
   const handleCancelSolution = () => {
@@ -90,6 +100,12 @@ function MainPageContent() {
         getTask(activeTask);
       }
     });
+  };
+
+  const handleSelectedCaseClick = () => {
+    if (!taskData) return;
+    navigate(RoutesEnum.Stack);
+    changeActiveCluster(taskData.cluster.id);
   };
 
   const updateButtonClick = async () => {
@@ -130,8 +146,10 @@ function MainPageContent() {
 
   const isSolution = !!taskData && taskData.solution;
 
-  const isAddSolutionBlock =
-    !!taskData && taskData.status === TaskStatusEnum.InProgress && !isSolution;
+  const isEditSolutionBlock =
+    !!taskData &&
+    taskData.status === TaskStatusEnum.InProgress &&
+    (!isSolution || isEditContent);
 
   if (activeTask === -1) {
     return <div className={styles.nodata}>{t("pages.noTasks")}</div>;
@@ -182,10 +200,12 @@ function MainPageContent() {
                   <p>{getStatus(taskData.status)}</p>
                 </label>
               </div>
-              <div>
-                <label>Исполнитель</label>
-                <p>{taskData.user.email}</p>
-              </div>
+              {taskData.user?.email && (
+                <div>
+                  <label>Исполнитель</label>
+                  <p>{taskData.user.email}</p>
+                </div>
+              )}
               <div>
                 <label>Время создания</label>
                 <p>{getTime(taskData.created_at)}</p>
@@ -207,9 +227,9 @@ function MainPageContent() {
               <div className={clsx(styles.block, styles["selected-solution"])}>
                 <div>
                   <p className={styles.title}>{t("pages.selectedCase")}:</p>
-                  <Link to={RoutesEnum.Stack}>
+                  <UnstyledButton onClick={handleSelectedCaseClick}>
                     <p className={styles.solution}>{taskData.case.title}</p>
-                  </Link>
+                  </UnstyledButton>
                 </div>
                 <ActionIcon
                   onClick={handleCancelCase}
@@ -221,47 +241,58 @@ function MainPageContent() {
                 </ActionIcon>
               </div>
             )}
-            {isSolution && (
-              <div className={styles["solution-block"]}>
-                <Button onClick={() => setEditContent(!isEditContent)}>
-                  {isEditContent ? t("common.Cancel") : t("common.Edit")}
-                </Button>
-
-                {!isEditContent && (
-                  <div className={styles["solution-block"]}>
-                    <div className={styles.solutionHead}>
-                      <p className={styles.title}>
-                        {t("pages.selectedSolution")}
-                      </p>
-                      <UIButton
-                        label={t("common.CancelSolution")}
-                        color="primary"
+            {(isSolution || isEditSolutionBlock) && (
+              <div className={clsx(styles.block, styles["solution-block"])}>
+                {isSolution && (
+                  <>
+                    <div className={styles["solution-nav"]}>
+                      <Button
+                        variant="subtle"
+                        leftSection={<IconPencil />}
+                        onClick={() => setEditContent(!isEditContent)}
+                      >
+                        {isEditContent ? t("common.Cancel") : t("common.Edit")}
+                      </Button>
+                      <ActionIcon
                         onClick={handleCancelSolution}
-                      />
+                        size={"lg"}
+                        variant="subtle"
+                        color="var(--clr-error)"
+                      >
+                        <IconTrash />
+                      </ActionIcon>
                     </div>
-                    <p className={styles.solution}>{taskData.solution}</p>
+
+                    {!isEditContent && (
+                      <div className={styles["solution-body"]}>
+                        <div className={styles.solutionHead}>
+                          <p className={styles.title}>
+                            {t("pages.selectedSolution")}:
+                          </p>
+                        </div>
+                        <p className={styles.solution}>{taskData.solution}</p>
+                      </div>
+                    )}
+                  </>
+                )}
+                {isEditSolutionBlock && (
+                  <div className={styles.sendForm}>
+                    <p>Добавить решение</p>
+                    <Textarea
+                      /* label={t("components.case.Solution")} */
+                      withAsterisk
+                      placeholder={t("components.case.AddSolutionText")}
+                      value={solution}
+                      onChange={(e) => setSolution(e.target.value)}
+                      autosize
+                      minRows={3}
+                      maxRows={6}
+                    />
+                    <Button onClick={handleAddSolution}>
+                      {t("components.case.AddCase")}
+                    </Button>
                   </div>
                 )}
-              </div>
-            )}
-            {isAddSolutionBlock && (
-              <div className={styles.sendForm}>
-                <Textarea
-                  label={t("components.case.Solution")}
-                  withAsterisk
-                  placeholder={t("components.case.AddSolutionText")}
-                  value={isEditContent ? taskData.solution : solution}
-                  onChange={(e) => setSolution(e.target.value)}
-                  autosize
-                  minRows={3}
-                  maxRows={6}
-                />
-                <UIButton
-                  label={t("components.case.AddCase")}
-                  color="success"
-                  fullWidth
-                  onClick={handleAddSolution}
-                />
               </div>
             )}
           </div>
