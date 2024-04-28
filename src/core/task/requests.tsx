@@ -115,12 +115,12 @@ export const addNewTaskRequest = async (
     return response;
   } catch (error) {
     console.log("Ошибка при добавлении задачи:", error);
-    notifications.show({
+   /*  notifications.show({
       color: "red",
       title: t("common.Error"),
       message: t("notifications.tasks.newTaskError"),
       classNames: classes,
-    });
+    }); */
     throw error;
   }
 };
