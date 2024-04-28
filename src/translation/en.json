@@ -65,14 +65,21 @@
     "Add": "Add",
     "Description": "Description",
     "CancelSolution": "Delete solution",
-    "Status": "Status"
+    "Status": "Status",
+    "Users": "Пользователи",
+    "Title": "Название",
+    "status": {
+      "InProgress": "В процессе",
+      "Completed": "Завершен"
+    }
   },
   "components": {
     "task": {
       "status": {
         "draft": "Waiting",
         "progress": "Progress",
-        "uknown": "Uknown"
+        "uknown": "Uknown",
+        "UserTask": "Tasks assigned to the user"
       },
       "AddTask": "Add new task",
       "Tasks": "Tasks"
@@ -140,6 +147,11 @@
       "deleteCaseError": "Error deleting a selected solution for a task",
       "deleteSolutionSuccessfull": "Successful deletion of a solution for a task",
       "deleteSolutionError": "Error deleting a solution for a task"
+    },
+    "users": {
+      "GetTasksSuccessful": "Successful getting tasks",
+      "GetTasksError": "Error getting tasks",
+      "GetUsers": "Error getting users"
     }
   }
 }

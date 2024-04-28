@@ -3,8 +3,6 @@ import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { addNewTask } from "../../core/task/layer";
-import { notifications } from "@mantine/notifications";
-import classes from "../../core/notifications.module.css";
 
 export const NewTaskPage = () => {
   const { t } = useTranslation();
@@ -20,12 +18,6 @@ export const NewTaskPage = () => {
         title: title,
         description: description,
       });
-    });
-    notifications.show({
-      color: "green",
-      title: t("common.Success"),
-      message: t("notifications.tasks.addSolutionSuccessfull"),
-      classNames: classes,
     });
     setTitle("");
     setDescription("");

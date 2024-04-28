@@ -10,7 +10,7 @@ function AdminContent() {
   const { t } = useTranslation();
   const { activeAdminUser, closeAdminUser } = useAdminUsers();
   const [usersData, setUserData] = useState<ITask[]>([]);
-  const [status, setStatus] = useState(0);
+  const [, setStatus] = useState(0);
 
   const handleButtonClick = (status: number) => {
     setStatus(status);
@@ -44,7 +44,7 @@ function AdminContent() {
             <div className={styles.clusterTitle}>
               <div className={styles.margins}>
                 <Button
-                  label="Приняты"
+                  label={t("common.status.InProgress")}
                   color="primary"
                   onClick={() => {
                     handleButtonClick(1);
@@ -53,7 +53,7 @@ function AdminContent() {
               </div>
               <div className={styles.margins}>
                 <Button
-                  label="Завершены"
+                  label={t("common.status.Completed")}
                   color="primary"
                   onClick={() => {
                     handleButtonClick(2);
@@ -63,25 +63,24 @@ function AdminContent() {
             </div>
             <Button {...closeButtonProps} />
           </div>
-          <h1 className={styles.title}>
-            {t("Задачи, закрепленные за пользователем:")}
-          </h1>
+          <h1 className={styles.title}>{t("components.task.UserTask")}</h1>
           <div className={styles.reverse}>
             {usersData && usersData.length > 0 ? (
               usersData.map((item) => (
                 <div key={item.id} className={styles.item}>
                   <div className={styles.headingSolution}>
                     <h1>
-                      Название: {item.title} #{item.id}
+                      {t("common.Title")}: {item.title} #{item.id}
                     </h1>
                     <div className={styles.buttonGroup}></div>
                   </div>
-                  <p>Описание: {item.description}</p>
-                  <p>Описание: {item.description}</p>
+                  <p>
+                    {t("common.Description")}: {item.description}
+                  </p>
                 </div>
               ))
             ) : (
-              <p>Нет задач</p>
+              <p>{t("common.NoData")}</p>
             )}
           </div>
         </div>

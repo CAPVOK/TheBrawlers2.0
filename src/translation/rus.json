@@ -66,14 +66,20 @@
     "Description": "Описание",
     "CancelSolution": "Удалить решение",
     "Status": "Статус",
-    "Users":"Пользователи"
+    "Users":"Пользователи",
+    "Title": "Название",
+    "status":{
+      "InProgress": "В процессе",
+      "Completed": "Завершен"
+    }
   },
   "components": {
     "task": {
       "status": {
         "draft": "Ожидание",
         "progress": "В процессе",
-        "uknown": "Неизвестно"
+        "uknown": "Неизвестно",
+        "UserTask": "Задачи, закрепленные за пользователем"
       },
       "AddTask": "Создать задачу",
       "Tasks": "Задачи"
