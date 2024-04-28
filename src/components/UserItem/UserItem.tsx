@@ -23,7 +23,7 @@ const UserItem: FC<IUserItemProps> = (props) => {
       tabIndex={0}
     >
       <p className={styles.text}>{email}</p>
-      <p className={styles.info}>{avgDuration}</p>
+      <p className={styles.info}>Средняя длительность: {avgDuration} сек.</p>
     </div>
   );
 };

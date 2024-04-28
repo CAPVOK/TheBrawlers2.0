@@ -5,7 +5,7 @@ import {
   OverflowPage,
   RegisterPage,
 } from "../../pages";
-import AdminPage from "../../pages/AdminPage/AdminPage";
+import { AdminPage } from "../../pages/AdminPage/AdminPage";
 import { NewTaskPage } from "../../pages/NewTaskPage/NewTaskPage";
 import { IAppRoute } from "./types";
 

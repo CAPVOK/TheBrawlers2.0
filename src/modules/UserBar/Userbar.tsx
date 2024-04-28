@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
-import { getUsers, tasksByUserId } from "../../core/user/layer";
+import { getUsers } from "../../core/user/layer";
 import UserItem from "../../components/UserItem/UserItem";
-import { Button } from "@mantine/core";
-import { ITask } from "../../core/task/types";
 import { useAdminUsers } from "../../store/adminSlice";
 
 function Userbar() {
   const { t } = useTranslation();
-  const { activeAdminUser, adminUsers, changeActiveAdminUser, closeAdminUser } =
+  const { activeAdminUser, adminUsers, changeActiveAdminUser } =
     useAdminUsers();
 
   useEffect(() => {
@@ -18,7 +16,6 @@ function Userbar() {
 
   const handleUserClick = (id: number) => {
     changeActiveAdminUser(id);
-    closeAdminUser();
   };
 
   return (

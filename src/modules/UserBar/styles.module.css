@@ -10,7 +10,7 @@
 
 .title {
   font-size: 1.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem 0.2rem 1rem;
 }
 
 .scroll-block {
@@ -24,14 +24,4 @@
   display: grid;
   padding: 1rem;
   gap: 1rem;
-}
-
-.header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.margins {
-  margin: 1rem 0;
 }

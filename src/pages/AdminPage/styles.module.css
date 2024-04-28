@@ -1,0 +1,36 @@
+.page {
+  height: 100vh;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  background-color: var(--clr-surface);
+}
+
+.body {
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 500px 1fr 0;
+  transition: 0.3s;
+}
+
+.nav {
+  height: 50px;
+  padding: 2rem 1rem;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--clr-surface-container);
+  border-bottom: 1px solid var(--clr-outline);
+  flex-direction: row;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.margins {
+  margin: 1rem 0;
+}
